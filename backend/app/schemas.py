@@ -27,6 +27,11 @@ class OTPResponse(BaseModel):
     dev_otp: str | None = None  # only present when DEV_RETURN_OTP=true
 
 
+class AdminLoginRequest(BaseModel):
+    email: str = Field(..., min_length=3, max_length=255)
+    password: str = Field(..., min_length=6, max_length=128)
+
+
 # ---------- Users ----------
 class UserOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)

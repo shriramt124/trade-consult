@@ -52,7 +52,7 @@ export default function AdminPage() {
           router.replace("/dashboard");
         }
       })
-      .catch(() => router.replace("/login?next=/admin"));
+      .catch(() => router.replace("/admin/login?next=/admin"));
   }, [router]);
 
   const publish = async (e: React.FormEvent) => {

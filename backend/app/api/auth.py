@@ -6,10 +6,18 @@ from sqlalchemy.orm import Session
 
 from app.core.config import settings
 from app.core.database import get_db
-from app.core.security import create_access_token, generate_otp
+from app.core.security import create_access_token, generate_otp, verify_password
 from app.deps import get_current_user
-from app.models import OTP, User
-from app.schemas import OTPRequest, OTPResponse, OTPVerify, Token, UserOut, UserUpdate
+from app.models import OTP, User, UserRole
+from app.schemas import (
+    AdminLoginRequest,
+    OTPRequest,
+    OTPResponse,
+    OTPVerify,
+    Token,
+    UserOut,
+    UserUpdate,
+)
 from app.services.notifications import send_sms
 
 router = APIRouter(prefix="/auth", tags=["auth"])
@@ -86,6 +94,23 @@ def verify_otp(body: OTPVerify, db: Session = Depends(get_db)):
 
     db.commit()
     db.refresh(user)
+
+    token = create_access_token(subject=str(user.id), role=user.role.value)
+    return Token(access_token=token, user=UserOut.model_validate(user))
+
+
+@router.post("/admin/login", response_model=Token)
+def admin_login(body: AdminLoginRequest, db: Session = Depends(get_db)):
+    user = db.scalar(select(User).where(User.email == body.email))
+    if (
+        not user
+        or not user.password_hash
+        or user.role not in (UserRole.admin, UserRole.analyst)
+        or not verify_password(body.password, user.password_hash)
+    ):
+        raise HTTPException(status_code=401, detail="Invalid email or password")
+    if not user.is_active:
+        raise HTTPException(status_code=401, detail="Account disabled")
 
     token = create_access_token(subject=str(user.id), role=user.role.value)
     return Token(access_token=token, user=UserOut.model_validate(user))

@@ -25,7 +25,7 @@ export default function AdminGuard({
           router.replace("/dashboard");
         }
       })
-      .catch(() => router.replace(`/login?next=${encodeURIComponent(next)}`));
+      .catch(() => router.replace(`/admin/login?next=${encodeURIComponent(next)}`));
   }, [router, next]);
 
   if (!authorized) {

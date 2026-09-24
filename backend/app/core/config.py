@@ -26,6 +26,8 @@ class Settings(BaseSettings):
     OTP_RESEND_COOLDOWN_SECONDS: int = 45
     OTP_MAX_ATTEMPTS: int = 5
     ADMIN_PHONE: str = "9999999999"
+    ADMIN_EMAIL: str = "admin@alphainsiight.com"
+    ADMIN_PASSWORD: str = "change-me-admin-pass"
 
     # SMS - MSG91
     MSG91_AUTH_KEY: str = ""
