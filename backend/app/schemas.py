@@ -181,6 +181,41 @@ class BlogPostListOut(BaseModel):
     published_at: datetime | None
 
 
+class BlogPostAdminOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    slug: str
+    title: str
+    excerpt: str
+    content: str
+    cover_image: str | None
+    author: str
+    is_published: bool
+    published_at: datetime | None
+    created_at: datetime
+
+
+class BlogPostCreate(BaseModel):
+    title: str = Field(..., min_length=1, max_length=250)
+    slug: str | None = Field(None, max_length=200)
+    excerpt: str = Field("", max_length=500)
+    content: str = ""
+    cover_image: str | None = None
+    author: str = Field("Research Desk", max_length=120)
+    is_published: bool = False
+
+
+class BlogPostUpdate(BaseModel):
+    title: str | None = Field(None, min_length=1, max_length=250)
+    slug: str | None = Field(None, max_length=200)
+    excerpt: str | None = Field(None, max_length=500)
+    content: str | None = None
+    cover_image: str | None = None
+    author: str | None = Field(None, max_length=120)
+    is_published: bool | None = None
+
+
 # ---------- Compliance ----------
 class ConsentIn(BaseModel):
     disclaimer_version: str = "v1"

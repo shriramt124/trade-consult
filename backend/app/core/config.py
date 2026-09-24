@@ -15,6 +15,9 @@ class Settings(BaseSettings):
 
     DATABASE_URL: str = "sqlite:///./trade_consult.db"
 
+    UPLOAD_DIR: str = "static/uploads"
+    MAX_UPLOAD_MB: int = 5
+
     BACKEND_CORS_ORIGINS: str = "http://localhost:3000"
 
     # Auth

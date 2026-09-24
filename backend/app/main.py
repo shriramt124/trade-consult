@@ -1,7 +1,9 @@
 import logging
+from pathlib import Path
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from app.api import (
     admin,
@@ -23,6 +25,8 @@ logging.basicConfig(level=logging.INFO)
 # Dev convenience: create tables on startup.
 # For production, use Alembic migrations instead.
 Base.metadata.create_all(bind=engine)
+
+Path("static/uploads").mkdir(parents=True, exist_ok=True)
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -51,6 +55,9 @@ for module in (
     admin,
 ):
     app.include_router(module.router, prefix=settings.API_V1_PREFIX)
+
+app.include_router(blog.admin_router, prefix=settings.API_V1_PREFIX)
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 @app.get("/health", tags=["meta"])
