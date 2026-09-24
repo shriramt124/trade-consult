@@ -62,11 +62,71 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* 4-pod telemetry strip */}
+          {/* 3D spatial hardware stage */}
           <div
-            className="hero-in relative mx-auto max-w-6xl pb-6"
+            className="hero-in relative -mx-3 max-w-6xl pb-6 sm:mx-auto"
             style={{ "--hero-delay": "240ms" } as React.CSSProperties}
           >
+            <div className="group relative overflow-hidden rounded-none border border-white/15 bg-gradient-to-b from-slate-900 via-[#121316] to-[#0A0C10] p-3 shadow-2xl sm:rounded-3xl sm:p-5 mb-5">
+              <div className="pointer-events-none absolute -right-20 -top-20 h-80 w-80 rounded-full bg-red-500/15 blur-3xl" />
+              <div className="pointer-events-none absolute -bottom-20 -left-20 h-80 w-80 rounded-full bg-red-500/10 blur-3xl" />
+
+              <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-white/10 bg-[#0A0B0E] shadow-inner">
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCddkKtn2KalRbFzasXm_NiJNmHpfqqrvmufO0FmuO9UMUdn1Bhv03JSwTiJHSZ1oRLrcl0ukJINdbVT-MSLBtFiv2IfHb-IDi7vShAFz5kPunrh_uWOVwelJmDJ1pACE7G2Ik-bmLeGax9i3bFs_SPIwv8FIiLvIyi8gMKhE_aE9yVg1M4VbjaZ17oU-I7qDNj-oyQBBYdQRfxJOnNJAlNknRVR9hP9DWXKXCgkNz7778S_4XGYfyzUA"
+                  alt="3D spatial hardware financial trading station"
+                  className="h-full w-full origin-center scale-[1.01] transform object-cover object-center opacity-90 transition-transform duration-700 ease-out group-hover:scale-100"
+                />
+
+                {/* Floating glass: signal matrix */}
+                <div className="glass-dark shadow-apple-dark absolute left-5 top-5 hidden max-w-xs transform rounded-2xl border border-red-400/30 p-4 backdrop-blur-xl transition-transform duration-500 group-hover:scale-105 sm:block">
+                  <div className="mb-2 flex items-center justify-between gap-2 border-b border-white/10 pb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="h-2 w-2 animate-ping rounded-full bg-red-400" />
+                      <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-red-300">Signal Matrix</span>
+                    </div>
+                    <span className="rounded bg-emerald-500/20 px-1.5 py-0.5 font-mono text-[9px] font-bold text-emerald-400">98.4% Confidence</span>
+                  </div>
+                  <div className="space-y-1.5 font-mono text-xs">
+                    <div className="flex items-center justify-between text-slate-300">
+                      <span className="text-[11px] text-slate-400">Target Ratio</span>
+                      <span className="text-[11px] font-bold text-white">1 : 2.8+ R:R</span>
+                    </div>
+                    <div className="flex items-center justify-between text-slate-300">
+                      <span className="text-[11px] text-slate-400">Trailing SL</span>
+                      <span className="text-[11px] font-medium text-red-300">Dynamic Breakeven</span>
+                    </div>
+                    <div className="flex items-center justify-between text-slate-300">
+                      <span className="text-[11px] text-slate-400">Model Desk</span>
+                      <span className="text-[11px] font-semibold text-emerald-400">NIFTY Alpha 24K</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating glass: telecom stream */}
+                <div className="glass-dark shadow-apple-dark absolute right-5 top-5 hidden max-w-xs transform rounded-2xl border border-emerald-400/30 p-4 backdrop-blur-xl transition-transform duration-500 group-hover:scale-105 sm:block">
+                  <div className="mb-2 flex items-center justify-between gap-3 border-b border-white/10 pb-2">
+                    <div className="flex items-center gap-1.5">
+                      <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
+                      <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-emerald-300">Telecom Stream</span>
+                    </div>
+                    <span className="font-mono text-xs font-bold text-white">&lt; 320ms</span>
+                  </div>
+                  <div className="space-y-1 font-mono text-xs">
+                    <div className="flex items-center justify-between text-[11px] text-slate-300">
+                      <span className="text-slate-400">Carrier Gateway</span>
+                      <span className="font-medium text-red-300">Priority High-SLA</span>
+                    </div>
+                    <div className="flex items-center justify-between text-[11px] text-slate-300">
+                      <span className="text-slate-400">Regulatory Seal</span>
+                      <span className="font-semibold text-emerald-400">SEBI Verified</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 4-pod telemetry strip — sits below the image, on the light page background */}
             <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
               {[
                 { label: "Coverage Scope", icon: "grid_view", value: "12 Research Services", sub: "Equity, Derivatives, Cash & MCX" },
