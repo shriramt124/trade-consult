@@ -123,6 +123,19 @@ export default function HomePage() {
                     </div>
                   </div>
                 </div>
+
+                {/* Floating glass: execution ticker */}
+                <div className="glass-dark shadow-apple-dark absolute bottom-4 left-1/2 mx-auto flex w-auto max-w-lg -translate-x-1/2 items-center gap-3.5 rounded-2xl border border-white/15 px-4 py-2.5 backdrop-blur-xl">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-red-400/30 bg-red-500/20 text-red-300">
+                    <span className="material-symbols-outlined text-[18px]">candlestick_chart</span>
+                  </div>
+                  <div className="text-left font-mono">
+                    <div className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 animate-ping rounded-full bg-emerald-400" />
+                      <span className="text-[9px] font-bold uppercase tracking-wider text-red-300">Real-Time Intraday &amp; Swing Execution</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
