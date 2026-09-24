@@ -6,25 +6,10 @@ from app.models import CallAction, CallStatus, UserRole
 
 
 # ---------- Auth ----------
-class OTPRequest(BaseModel):
-    phone: str = Field(..., min_length=10, max_length=15)
-
-
-class OTPVerify(BaseModel):
-    phone: str = Field(..., min_length=10, max_length=15)
-    code: str = Field(..., min_length=6, max_length=6)
-    name: str | None = None
-
-
 class Token(BaseModel):
     access_token: str
     token_type: str = "bearer"
     user: "UserOut"
-
-
-class OTPResponse(BaseModel):
-    message: str
-    dev_otp: str | None = None  # only present when DEV_RETURN_OTP=true
 
 
 class AdminLoginRequest(BaseModel):
@@ -42,11 +27,6 @@ class UserOut(BaseModel):
     email: str | None
     role: UserRole
     kyc_status: str
-
-
-class UserUpdate(BaseModel):
-    name: str | None = None
-    email: str | None = None
 
 
 # ---------- Plans ----------
@@ -112,30 +92,6 @@ class TrackRecordStats(BaseModel):
 class TrackRecord(BaseModel):
     stats: TrackRecordStats
     calls: list[RecommendationOut]
-
-
-# ---------- Subscriptions / Payments ----------
-class SubscribeRequest(BaseModel):
-    plan_id: int
-
-
-class OrderOut(BaseModel):
-    order_id: str
-    amount_paise: int
-    currency: str = "INR"
-    key_id: str | None = None
-    subscription_id: int
-
-
-class SubscriptionOut(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
-
-    id: int
-    plan_id: int
-    status: str
-    starts_at: datetime | None
-    ends_at: datetime | None
-    plan: PlanOut
 
 
 # ---------- Tickets ----------

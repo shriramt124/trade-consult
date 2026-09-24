@@ -10,10 +10,8 @@ from app.api import (
     auth,
     blog,
     compliance,
-    payments,
     plans,
     recommendations,
-    subscriptions,
     tickets,
 )
 from app.core.config import settings
@@ -47,8 +45,6 @@ for module in (
     auth,
     plans,
     recommendations,
-    subscriptions,
-    payments,
     tickets,
     blog,
     compliance,

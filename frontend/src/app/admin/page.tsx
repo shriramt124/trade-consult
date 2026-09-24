@@ -49,7 +49,7 @@ export default function AdminPage() {
           refresh();
           api.get<Plan[]>("/plans").then(setPlans).catch(() => {});
         } else {
-          router.replace("/dashboard");
+          router.replace("/");
         }
       })
       .catch(() => router.replace("/admin/login?next=/admin"));

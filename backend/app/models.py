@@ -41,18 +41,6 @@ class User(Base):
     tickets: Mapped[list["Ticket"]] = relationship(back_populates="user")
 
 
-class OTP(Base):
-    __tablename__ = "otps"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-    phone: Mapped[str] = mapped_column(String(15), index=True)
-    code: Mapped[str] = mapped_column(String(6))
-    expires_at: Mapped[datetime] = mapped_column(DateTime)
-    consumed: Mapped[bool] = mapped_column(Boolean, default=False)
-    attempts: Mapped[int] = mapped_column(Integer, default=0)
-    created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
-
-
 class Plan(Base):
     __tablename__ = "plans"
 

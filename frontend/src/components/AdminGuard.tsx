@@ -22,7 +22,7 @@ export default function AdminGuard({
         if (u.role === "admin" || u.role === "analyst") {
           setAuthorized(true);
         } else {
-          router.replace("/dashboard");
+          router.replace("/");
         }
       })
       .catch(() => router.replace(`/admin/login?next=${encodeURIComponent(next)}`));

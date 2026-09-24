@@ -48,9 +48,8 @@ async function request<T>(
     if (auth && res.status === 401 && typeof window !== "undefined") {
       clearToken();
       const next = window.location.pathname;
-      const loginPath = next.startsWith("/admin") ? "/admin/login" : "/login";
-      if (!next.startsWith(loginPath)) {
-        window.location.href = `${loginPath}?next=${encodeURIComponent(next)}`;
+      if (!next.startsWith("/admin/login")) {
+        window.location.href = `/admin/login?next=${encodeURIComponent(next)}`;
       }
     }
     throw new Error(detail);

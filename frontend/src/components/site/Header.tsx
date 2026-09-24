@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { clearToken, getToken } from "@/lib/api";
 
 const LINKS = [
   { href: "/", label: "Home" },
@@ -17,11 +16,9 @@ const LINKS = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    setLoggedIn(Boolean(getToken()));
     setOpen(false);
   }, [pathname]);
 
@@ -68,32 +65,12 @@ export default function Header() {
             <span className="material-symbols-outlined text-[15px] text-red-600">call</span>
             +91 95755 19739
           </a>
-          {loggedIn ? (
-            <>
-              <Link
-                href="/dashboard"
-                className="apple-red-gradient inline-flex items-center justify-center rounded-full px-5 py-2 text-xs font-semibold text-white shadow-md shadow-red-600/25 transition-all hover:brightness-110 active:scale-95"
-              >
-                Dashboard
-              </Link>
-              <button
-                onClick={() => {
-                  clearToken();
-                  setLoggedIn(false);
-                }}
-                className="text-xs font-medium text-slate-500 hover:text-slate-900"
-              >
-                Logout
-              </button>
-            </>
-          ) : (
-            <Link
-              href="/pricing"
-              className="apple-red-gradient inline-flex items-center justify-center rounded-full px-5 py-2 text-xs font-semibold text-white shadow-md shadow-red-600/25 transition-all hover:brightness-110 active:scale-95"
-            >
-              Start Advisory
-            </Link>
-          )}
+          <Link
+            href="/pricing"
+            className="apple-red-gradient inline-flex items-center justify-center rounded-full px-5 py-2 text-xs font-semibold text-white shadow-md shadow-red-600/25 transition-all hover:brightness-110 active:scale-95"
+          >
+            Start Advisory
+          </Link>
         </div>
 
         {/* Mobile toggle */}
@@ -126,10 +103,10 @@ export default function Header() {
               +91 95755 19739
             </a>
             <Link
-              href={loggedIn ? "/dashboard" : "/login"}
+              href="/pricing"
               className="apple-red-gradient mt-2 inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-white"
             >
-              {loggedIn ? "Dashboard" : "Login / Subscribe"}
+              Start Advisory
             </Link>
           </div>
         </nav>
