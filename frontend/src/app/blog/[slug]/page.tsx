@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { apiServer, API_ORIGIN } from "@/lib/api";
 import { FALLBACK_POSTS } from "@/lib/data";
+import { ensureHtmlContent } from "@/lib/htmlContent";
 import { processContent, readingTime } from "@/lib/toc";
 import TableOfContents from "@/components/TableOfContents";
 import type { BlogPost } from "@/lib/types";
@@ -29,8 +30,9 @@ export default async function BlogPostPage({ params }: Props) {
   const post = await getPost(slug);
   if (!post) notFound();
 
-  const { html, toc } = processContent(post.content ?? "");
-  const minutes = readingTime(post.content ?? "");
+  const safeContent = ensureHtmlContent(post.content ?? "");
+  const { html, toc } = processContent(safeContent);
+  const minutes = readingTime(safeContent);
   const dateLabel = post.published_at
     ? new Date(post.published_at).toLocaleDateString("en-IN", {
         day: "numeric",

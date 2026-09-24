@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { api, API_ORIGIN } from "@/lib/api";
+import { ensureHtmlContent } from "@/lib/htmlContent";
 import type { BlogPostAdmin, BlogPostInput } from "@/lib/types";
 
 const BlogEditor = dynamic(() => import("@/components/BlogEditor"), {
@@ -35,7 +36,7 @@ export default function BlogPostForm({ initial }: { initial?: BlogPostAdmin }) {
   const [coverImage, setCoverImage] = useState<string | null>(
     initial?.cover_image ?? null
   );
-  const [content, setContent] = useState(initial?.content ?? "");
+  const [content, setContent] = useState(ensureHtmlContent(initial?.content ?? ""));
   const [coverUploading, setCoverUploading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");

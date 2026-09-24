@@ -261,14 +261,25 @@ BLOG_POSTS = [
         "slug": "navigating-the-ipo-wave",
         "title": "Navigating the IPO Wave: How to Evaluate New Listings",
         "excerpt": "A practical framework for separating quality IPOs from hype-driven listings.",
-        "content": "IPO markets reward discipline. Before applying, check the company's revenue growth, promoter holding, peer valuation and the objects of the issue...\n\nAvoid subscribing purely for listing gains in overheated markets.",
+        "content": (
+            "<p>IPO markets reward discipline. Before applying, check the "
+            "company's revenue growth, promoter holding, peer valuation and "
+            "the objects of the issue...</p>"
+            "<p>Avoid subscribing purely for listing gains in overheated "
+            "markets.</p>"
+        ),
         "author": "Research Desk",
     },
     {
         "slug": "risk-management-basics",
         "title": "Risk Management Basics Every Trader Must Follow",
         "excerpt": "Position sizing and stop-losses decide survival long before strategy decides profit.",
-        "content": "Never risk more than 1-2% of your capital on a single trade. A stop-loss is not a suggestion — it is the cost of being wrong...\n\nConsistency beats intensity in markets.",
+        "content": (
+            "<p>Never risk more than 1-2% of your capital on a single trade. "
+            "A stop-loss is not a suggestion — it is the cost of being "
+            "wrong...</p>"
+            "<p>Consistency beats intensity in markets.</p>"
+        ),
         "author": "Research Desk",
     },
 ]

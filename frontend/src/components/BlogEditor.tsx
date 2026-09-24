@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useEditor, EditorContent, type Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
@@ -211,7 +211,72 @@ function Toolbar({ editor }: { editor: Editor | null }) {
   );
 }
 
+function TableControls({ editor }: { editor: Editor | null }) {
+  if (!editor || !editor.isActive("table")) return null;
+
+  return (
+    <div className="flex flex-wrap items-center gap-0.5 border-b border-slate-200 bg-brand-50 px-2 py-1.5">
+      <span className="mr-1 text-xs font-semibold uppercase tracking-wide text-brand-600">
+        Table
+      </span>
+      <ToolbarButton
+        label="+ Row"
+        title="Add row after"
+        onClick={() => editor.chain().focus().addRowAfter().run()}
+      />
+      <ToolbarButton
+        label="+ Col"
+        title="Add column after"
+        onClick={() => editor.chain().focus().addColumnAfter().run()}
+      />
+      <ToolbarButton
+        label="− Row"
+        title="Delete current row"
+        onClick={() => editor.chain().focus().deleteRow().run()}
+      />
+      <ToolbarButton
+        label="− Col"
+        title="Delete current column"
+        onClick={() => editor.chain().focus().deleteColumn().run()}
+      />
+      <Divider />
+      <ToolbarButton
+        label="Delete Table"
+        title="Delete the whole table"
+        onClick={() => editor.chain().focus().deleteTable().run()}
+      />
+    </div>
+  );
+}
+
+function uploadImageIntoView(
+  view: import("@tiptap/pm/view").EditorView,
+  file: File,
+  pos: number,
+  onStart: () => void,
+  onDone: () => void
+) {
+  onStart();
+  api
+    .upload<{ url: string }>("/admin/blog/upload-image", file)
+    .then(({ url }) => {
+      const node = view.state.schema.nodes.image.create({
+        src: `${API_ORIGIN}${url}`,
+      });
+      const tr = view.state.tr.insert(Math.min(pos, view.state.doc.content.size), node);
+      view.dispatch(tr);
+    })
+    .catch((err) => {
+      alert(err instanceof Error ? err.message : "Image upload failed");
+    })
+    .finally(onDone);
+}
+
 export default function BlogEditor({ value, onChange }: Props) {
+  const [uploadingCount, setUploadingCount] = useState(0);
+  const bumpUploading = (delta: number) =>
+    setUploadingCount((c) => Math.max(0, c + delta));
+
   const editor = useEditor({
     immediatelyRender: false,
     extensions: [
@@ -232,13 +297,51 @@ export default function BlogEditor({ value, onChange }: Props) {
       attributes: {
         class: "blog-content min-h-[420px] px-6 py-6 focus:outline-none",
       },
+      handleDrop(view, event, _slice, moved) {
+        if (moved) return false; // reordering existing content, not a file drop
+        const files = Array.from(event.dataTransfer?.files ?? []).filter((f) =>
+          f.type.startsWith("image/")
+        );
+        if (files.length === 0) return false;
+        event.preventDefault();
+        const coords = view.posAtCoords({ left: event.clientX, top: event.clientY });
+        const pos = coords?.pos ?? view.state.selection.from;
+        files.forEach((file) =>
+          uploadImageIntoView(view, file, pos, () => bumpUploading(1), () => bumpUploading(-1))
+        );
+        return true;
+      },
+      handlePaste(view, event) {
+        const files = Array.from(event.clipboardData?.items ?? [])
+          .filter((item) => item.type.startsWith("image/"))
+          .map((item) => item.getAsFile())
+          .filter((f): f is File => f !== null);
+        if (files.length === 0) return false;
+        event.preventDefault();
+        const pos = view.state.selection.from;
+        files.forEach((file) =>
+          uploadImageIntoView(view, file, pos, () => bumpUploading(1), () => bumpUploading(-1))
+        );
+        return true;
+      },
     },
   });
 
   return (
     <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
       <Toolbar editor={editor} />
-      <EditorContent editor={editor} />
+      <TableControls editor={editor} />
+      <div className="relative">
+        <EditorContent editor={editor} />
+        {uploadingCount > 0 && (
+          <div className="absolute right-3 top-3 rounded-full bg-navy-900/90 px-3 py-1 text-xs font-medium text-white shadow">
+            Uploading image…
+          </div>
+        )}
+      </div>
+      <p className="border-t border-slate-100 px-4 py-2 text-xs text-slate-400">
+        Tip: paste a screenshot or drag an image file straight into the text — it uploads automatically.
+      </p>
     </div>
   );
 }
