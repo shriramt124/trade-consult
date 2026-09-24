@@ -28,7 +28,8 @@ class User(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     phone: Mapped[str] = mapped_column(String(15), unique=True, index=True)
     name: Mapped[str | None] = mapped_column(String(120), nullable=True)
-    email: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    email: Mapped[str | None] = mapped_column(String(255), unique=True, nullable=True)
+    password_hash: Mapped[str | None] = mapped_column(String(255), nullable=True)
     role: Mapped[UserRole] = mapped_column(SAEnum(UserRole), default=UserRole.subscriber)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
     kyc_status: Mapped[KYCStatus] = mapped_column(
@@ -38,18 +39,6 @@ class User(Base):
 
     subscriptions: Mapped[list["Subscription"]] = relationship(back_populates="user")
     tickets: Mapped[list["Ticket"]] = relationship(back_populates="user")
-
-
-class OTP(Base):
-    __tablename__ = "otps"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-    phone: Mapped[str] = mapped_column(String(15), index=True)
-    code: Mapped[str] = mapped_column(String(6))
-    expires_at: Mapped[datetime] = mapped_column(DateTime)
-    consumed: Mapped[bool] = mapped_column(Boolean, default=False)
-    attempts: Mapped[int] = mapped_column(Integer, default=0)
-    created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
 
 
 class Plan(Base):

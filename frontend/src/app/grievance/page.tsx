@@ -13,14 +13,14 @@ const ROWS = [
 
 export default function GrievancePage() {
   return (
-    <div className="bg-slate-50 py-16">
+    <div className="bg-slate-50 py-8 sm:py-16">
       <div className="container-site max-w-5xl">
         <h1 className="section-title">Grievance Redressal / Escalation Matrix</h1>
-        <p className="mt-3 text-sm leading-relaxed text-slate-600">
+        <p className="mt-2 text-xs leading-relaxed text-slate-600 sm:mt-3 sm:text-sm">
           If you have any grievance or complaint, you may contact the below officials for assistance.
         </p>
 
-        <div className="mt-8 overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
+        <div className="mt-5 overflow-x-auto rounded-xl border border-slate-200 shadow-sm sm:mt-8 sm:rounded-2xl">
           <table className="w-full min-w-[720px] text-left text-sm">
             <thead className="bg-slate-900 text-xs font-semibold uppercase tracking-wide text-white">
               <tr>
@@ -51,9 +51,9 @@ export default function GrievancePage() {
           </table>
         </div>
 
-        <div className="card mt-10 border-l-4 border-red-700">
-          <h2 className="text-lg font-semibold text-navy-900">Escalation Process</h2>
-          <div className="mt-4 space-y-3 text-sm leading-relaxed text-slate-600">
+        <div className="card mt-6 border-l-4 border-red-700 sm:mt-10">
+          <h2 className="text-base font-semibold text-navy-900 sm:text-lg">Escalation Process</h2>
+          <div className="mt-3 space-y-2.5 text-xs leading-relaxed text-slate-600 sm:mt-4 sm:space-y-3 sm:text-sm">
             <p>
               The above details facilitate complainants to approach the concerned Research Analyst
               before filing a complaint with SEBI. For more details, refer to the applicable BSE Circular.

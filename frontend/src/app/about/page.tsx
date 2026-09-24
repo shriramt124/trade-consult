@@ -19,13 +19,13 @@ const STATS = [
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-navy-950 py-20">
+      <section className="bg-navy-950 py-10 sm:py-20">
         <div className="container-site max-w-3xl">
           <p className="eyebrow">About Us</p>
-          <h1 className="mt-2 text-4xl font-extrabold text-white sm:text-5xl">
+          <h1 className="mt-2 text-2xl font-extrabold text-white sm:text-5xl">
             Alpha Insiight
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-slate-300">
+          <p className="mt-3 text-sm leading-relaxed text-slate-300 sm:mt-6 sm:text-lg">
             Alpha Insiight services is one the innovative service provider in India.
             We provide technical based view and information under one roof. Our team
             is highly skilled and experienced in Indian stock market. Our team helps
@@ -35,7 +35,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20">
+      <section className="bg-white py-10 sm:py-20">
         <div className="container-site">
           <div className="grid gap-6 md:grid-cols-2">
             <div className="card">
@@ -69,9 +69,13 @@ export default function AboutPage() {
           </div>
 
           <div className="mt-8 grid gap-6 sm:grid-cols-3">
-            {STATS.map((s) => (
-              <div key={s.title} className="card text-center">
-                <span className="text-3xl font-extrabold text-brand-600">{s.pct}</span>
+            {STATS.map((s, i) => (
+              <div
+                key={s.title}
+                className="card reveal text-center"
+                style={{ "--reveal-delay": `${i * 100}ms` } as React.CSSProperties}
+              >
+                <span className="text-2xl font-extrabold text-brand-600 sm:text-3xl">{s.pct}</span>
                 <h3 className="mt-2 text-sm font-semibold text-navy-900">{s.title}</h3>
                 <p className="mt-1 text-xs leading-relaxed text-slate-500">{s.desc}</p>
               </div>

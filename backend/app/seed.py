@@ -8,6 +8,7 @@ from sqlalchemy import select
 
 from app.core.config import settings
 from app.core.database import Base, SessionLocal, engine
+from app.core.security import hash_password
 from app.models import BlogPost, Plan, User, UserRole
 
 # Superseded by the catalog below — kept inactive rather than deleted so any
@@ -260,14 +261,25 @@ BLOG_POSTS = [
         "slug": "navigating-the-ipo-wave",
         "title": "Navigating the IPO Wave: How to Evaluate New Listings",
         "excerpt": "A practical framework for separating quality IPOs from hype-driven listings.",
-        "content": "IPO markets reward discipline. Before applying, check the company's revenue growth, promoter holding, peer valuation and the objects of the issue...\n\nAvoid subscribing purely for listing gains in overheated markets.",
+        "content": (
+            "<p>IPO markets reward discipline. Before applying, check the "
+            "company's revenue growth, promoter holding, peer valuation and "
+            "the objects of the issue...</p>"
+            "<p>Avoid subscribing purely for listing gains in overheated "
+            "markets.</p>"
+        ),
         "author": "Research Desk",
     },
     {
         "slug": "risk-management-basics",
         "title": "Risk Management Basics Every Trader Must Follow",
         "excerpt": "Position sizing and stop-losses decide survival long before strategy decides profit.",
-        "content": "Never risk more than 1-2% of your capital on a single trade. A stop-loss is not a suggestion — it is the cost of being wrong...\n\nConsistency beats intensity in markets.",
+        "content": (
+            "<p>Never risk more than 1-2% of your capital on a single trade. "
+            "A stop-loss is not a suggestion — it is the cost of being "
+            "wrong...</p>"
+            "<p>Consistency beats intensity in markets.</p>"
+        ),
         "author": "Research Desk",
     },
 ]
@@ -284,10 +296,15 @@ def run() -> None:
                 phone=settings.ADMIN_PHONE,
                 name="Admin",
                 role=UserRole.admin,
-                email="info@alphainsiight.com",
+                email=settings.ADMIN_EMAIL,
+                password_hash=hash_password(settings.ADMIN_PASSWORD),
             )
             db.add(admin)
             print(f"+ Admin user created (phone {settings.ADMIN_PHONE})")
+        elif not admin.password_hash:
+            admin.email = admin.email or settings.ADMIN_EMAIL
+            admin.password_hash = hash_password(settings.ADMIN_PASSWORD)
+            print(f"+ Admin password set for existing admin ({admin.email})")
 
         # Plans
         existing = set(db.scalars(select(Plan.code)).all())

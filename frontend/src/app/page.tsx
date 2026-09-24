@@ -5,60 +5,68 @@ export default function HomePage() {
   return (
     <>
       {/* ============ HERO: Obsidian Keynote & Liquid Glass ============ */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#F5F5F7] via-white to-[#F5F5F7] pb-24 pt-10">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#F5F5F7] via-white to-[#F5F5F7] pb-14 pt-6 sm:pb-24 sm:pt-10">
         <div className="pointer-events-none absolute -top-4 left-1/2 -z-10 h-[560px] w-[1000px] -translate-x-1/2 bg-gradient-to-tr from-red-200/50 via-rose-100/60 to-transparent blur-[140px]" />
         <div className="pointer-events-none absolute -left-16 top-1/3 -z-10 h-96 w-96 bg-red-500/10 blur-[130px]" />
         <div className="pointer-events-none absolute -right-16 top-1/2 -z-10 h-96 w-96 bg-red-500/10 blur-[130px]" />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6">
+        <div className="relative z-10 mx-auto max-w-7xl px-3 sm:px-6">
           {/* Center pill badge */}
-          <div className="mb-5 flex justify-center">
-            <div className="glass-pill shadow-apple-soft inline-flex items-center gap-2.5 rounded-full border border-black/5 px-4 py-1.5 text-xs font-medium text-slate-800 transition-all hover:border-red-500/30">
-              <span className="relative flex h-2 w-2">
+          <div className="mb-3 flex justify-center sm:mb-5">
+            <div
+              className="hero-in glass-pill shadow-apple-soft inline-flex flex-wrap items-center justify-center gap-1.5 rounded-full border border-black/5 px-3 py-1 text-[10px] font-medium text-slate-800 transition-all hover:-translate-y-1 hover:border-red-500/30 hover:shadow-lg sm:gap-2.5 sm:px-4 sm:py-1.5 sm:text-xs"
+            >
+              <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-red-600" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-red-600 sm:h-2 sm:w-2" />
               </span>
               <span className="font-medium text-slate-700">SEBI Registered Research Analyst</span>
-              <span className="text-slate-300">•</span>
+              <span className="hidden text-slate-300 sm:inline">•</span>
               <span className="font-mono font-semibold text-red-700">Reg. INH000020660</span>
-              <span className="material-symbols-outlined text-[15px] text-red-600">verified</span>
+              <span className="material-symbols-outlined text-[13px] text-red-600 sm:text-[15px]">verified</span>
             </div>
           </div>
 
           {/* Headline & subtitle */}
-          <div className="mx-auto mb-12 max-w-4xl text-center">
-            <h1 className="mb-5 text-4xl font-extrabold leading-[1.06] tracking-tight text-slate-950 sm:text-6xl lg:text-7xl">
+          <div
+            className="hero-in mx-auto mb-8 max-w-4xl text-center sm:mb-12"
+            style={{ "--hero-delay": "120ms" } as React.CSSProperties}
+          >
+            <h1 className="mb-3 text-3xl font-extrabold leading-[1.08] tracking-tight text-slate-950 sm:mb-5 sm:text-6xl lg:text-7xl">
               Engineered for Clarity. <br className="hidden sm:inline" />
               <span className="bg-gradient-to-r from-slate-950 via-red-700 to-red-500 bg-clip-text text-transparent">
                 Driven by Alpha.
               </span>
             </h1>
-            <p className="mx-auto max-w-2xl text-base font-normal leading-relaxed text-slate-600 sm:text-lg lg:text-xl">
+            <p className="mx-auto max-w-2xl text-sm font-normal leading-relaxed text-slate-600 sm:text-lg lg:text-xl">
               Institutional-grade technical market research, disciplined risk
               allocations, and pure execution signals delivered directly to your live
               dashboard, SMS and WhatsApp.
             </p>
 
-            <div className="mt-7 flex flex-wrap items-center justify-center gap-3.5">
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-2.5 sm:mt-7 sm:gap-3.5">
               <Link
                 href="/services"
-                className="apple-red-gradient flex items-center gap-2 rounded-full px-6 py-3 text-xs font-semibold text-white shadow-lg shadow-red-600/30 transition-all hover:shadow-red-600/50 hover:brightness-110 active:scale-95 sm:text-sm"
+                className="apple-red-gradient flex items-center gap-1.5 rounded-full px-4 py-2.5 text-[11px] font-semibold text-white shadow-lg shadow-red-600/30 transition-all hover:shadow-red-600/50 hover:brightness-110 active:scale-95 sm:gap-2 sm:px-6 sm:py-3 sm:text-sm"
               >
                 <span>Explore 12 Research Services</span>
-                <span className="material-symbols-outlined text-[18px]">arrow_downward</span>
+                <span className="material-symbols-outlined text-[16px] sm:text-[18px]">arrow_downward</span>
               </Link>
               <Link
                 href="/disclosure"
-                className="shadow-apple-soft flex items-center gap-2 rounded-full border border-white/10 bg-slate-950 px-6 py-3 text-xs font-semibold text-white transition-all hover:bg-slate-900 active:scale-95 sm:text-sm"
+                className="shadow-apple-soft flex items-center gap-1.5 rounded-full border border-white/10 bg-slate-950 px-4 py-2.5 text-[11px] font-semibold text-white transition-all hover:bg-slate-900 active:scale-95 sm:gap-2 sm:px-6 sm:py-3 sm:text-sm"
               >
-                <span className="material-symbols-outlined text-[18px] text-red-400">verified_user</span>
+                <span className="material-symbols-outlined text-[16px] text-red-400 sm:text-[18px]">verified_user</span>
                 <span>Verify SEBI Mandate</span>
               </Link>
             </div>
           </div>
 
           {/* 3D spatial hardware stage */}
-          <div className="relative -mx-6 max-w-6xl pb-6 sm:mx-auto">
+          <div
+            className="hero-in relative -mx-3 max-w-6xl pb-6 sm:mx-auto"
+            style={{ "--hero-delay": "240ms" } as React.CSSProperties}
+          >
             <div className="group relative overflow-hidden rounded-none border border-white/15 bg-gradient-to-b from-slate-900 via-[#121316] to-[#0A0C10] p-3 shadow-2xl sm:rounded-3xl sm:p-5 mb-5">
               <div className="pointer-events-none absolute -right-20 -top-20 h-80 w-80 rounded-full bg-red-500/15 blur-3xl" />
               <div className="pointer-events-none absolute -bottom-20 -left-20 h-80 w-80 rounded-full bg-red-500/10 blur-3xl" />
@@ -126,9 +134,6 @@ export default function HomePage() {
                       <span className="h-1.5 w-1.5 animate-ping rounded-full bg-emerald-400" />
                       <span className="text-[9px] font-bold uppercase tracking-wider text-red-300">Real-Time Intraday &amp; Swing Execution</span>
                     </div>
-                    <div className="truncate text-xs font-semibold text-white">
-                      <span className="font-bold text-red-400">[NIFTY OPTION]</span> 24,350 CE • Entry: 142.50 • SL: 118.00 • T1: 185.00 • T2: 220.00
-                    </div>
                   </div>
                 </div>
               </div>
@@ -142,13 +147,13 @@ export default function HomePage() {
                 { label: "Execution Discipline", icon: "tune", value: "Strict SL & 1:2.8+ Targets", sub: "Pre-calculated mathematical R:R" },
                 { label: "Regulatory Mandate", icon: "verified_user", value: "INH000020660", sub: "SEBI RA • Fiduciary Compliance", mono: true },
               ].map((m) => (
-                <div key={m.label} className="glass-light shadow-apple-soft rounded-2xl border border-slate-200/70 p-3.5 transition-all hover:bg-white sm:p-4">
-                  <div className="mb-1 flex items-center justify-between">
-                    <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-slate-500">{m.label}</span>
-                    <span className="material-symbols-outlined text-[16px] text-red-600">{m.icon}</span>
+                <div key={m.label} className="glass-light shadow-apple-soft rounded-xl border border-slate-200/70 p-2.5 transition-all hover:bg-white sm:rounded-2xl sm:p-4">
+                  <div className="mb-1 flex items-center justify-between gap-1">
+                    <span className="font-mono text-[9px] font-semibold uppercase tracking-wider text-slate-500 sm:text-[10px]">{m.label}</span>
+                    <span className="material-symbols-outlined text-[14px] text-red-600 sm:text-[16px]">{m.icon}</span>
                   </div>
-                  <span className={`block break-words text-sm font-bold sm:text-lg ${m.accent ? "text-red-700" : "text-slate-900"} ${m.mono ? "font-mono" : ""}`}>{m.value}</span>
-                  <span className="mt-0.5 block text-[11px] text-slate-500">{m.sub}</span>
+                  <span className={`block break-words text-xs font-bold sm:text-lg ${m.accent ? "text-red-700" : "text-slate-900"} ${m.mono ? "font-mono" : ""}`}>{m.value}</span>
+                  <span className="mt-0.5 block text-[10px] text-slate-500 sm:text-[11px]">{m.sub}</span>
                 </div>
               ))}
             </div>
@@ -157,11 +162,11 @@ export default function HomePage() {
       </section>
 
       {/* ============ DELIVERY SPOTLIGHT: Panoramic Triple-Visual Stream ============ */}
-      <section className="relative overflow-hidden bg-slate-950 py-12 sm:py-20 text-white">
+      <section className="relative overflow-hidden bg-slate-950 py-8 sm:py-20 text-white">
         <div className="pointer-events-none absolute -top-32 right-1/4 h-96 w-96 bg-red-500/10 blur-[130px]" />
         <div className="pointer-events-none absolute bottom-0 left-10 h-96 w-96 bg-red-600/10 blur-[140px]" />
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mx-auto mb-8 sm:mb-16 max-w-3xl text-center">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="reveal mx-auto mb-8 sm:mb-16 max-w-3xl text-center">
             <span className="mb-3 block font-mono text-xs font-semibold uppercase tracking-widest text-red-400">
               Delivery Infrastructure
             </span>
@@ -203,10 +208,11 @@ export default function HomePage() {
                 objectPos: "object-center",
                 desc: "Macro-aligned evening volatility setups in crude oil and precious metals.",
               },
-            ].map((c) => (
+            ].map((c, i) => (
               <div
                 key={c.title}
-                className="glass-dark shadow-apple-dark group flex flex-col overflow-hidden rounded-none border-x-0 border-white/10 p-4 sm:rounded-3xl sm:border-x sm:p-5"
+                className="reveal glass-dark shadow-apple-dark group flex flex-col overflow-hidden rounded-none border-x-0 border-white/10 p-4 transition-all duration-300 hover:-translate-y-1 sm:rounded-3xl sm:border-x sm:p-5"
+                style={{ "--reveal-delay": `${i * 100}ms` } as React.CSSProperties}
               >
                 <div className="relative mb-4 aspect-[4/3] overflow-hidden rounded-2xl border border-white/15">
                   <img
@@ -229,9 +235,9 @@ export default function HomePage() {
       </section>
 
       {/* ============ BENTO: ADVISORY DESKS ============ */}
-      <section className="bg-[#F5F5F7] py-14 sm:py-24" id="services">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-6 sm:mb-12 flex flex-col gap-3 sm:gap-6 md:flex-row md:items-end md:justify-between">
+      <section className="bg-[#F5F5F7] py-10 sm:py-24" id="services">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="reveal mb-6 sm:mb-12 flex flex-col gap-3 sm:gap-6 md:flex-row md:items-end md:justify-between">
             <div>
               <div className="mb-2 font-mono text-xs font-semibold uppercase tracking-widest text-red-700">
                 Advisory Architecture
@@ -262,9 +268,9 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 gap-3 sm:gap-6 md:grid-cols-2 lg:grid-cols-12">
+          <div className="reveal grid grid-cols-1 gap-3 sm:gap-6 md:grid-cols-2 lg:grid-cols-12">
             {/* Equity — big card */}
-            <div className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-black/5 bg-white p-4 sm:p-6 md:p-8 shadow-apple-soft transition-all hover:border-red-500/30 lg:col-span-8">
+            <div className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-black/5 bg-white p-4 sm:p-6 md:p-8 shadow-apple-soft transition-all hover:-translate-y-1 hover:border-red-500/30 hover:shadow-lg lg:col-span-8">
               <div className="pointer-events-none absolute -bottom-20 -right-20 h-80 w-80 rounded-full bg-red-100/60 blur-3xl transition-all group-hover:bg-red-200/40" />
               <div>
                 <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
@@ -301,7 +307,7 @@ export default function HomePage() {
             </div>
 
             {/* Cash */}
-            <div className="flex flex-col justify-between rounded-3xl border border-black/5 bg-white p-4 sm:p-6 md:p-8 shadow-apple-soft transition-all hover:border-red-500/30 lg:col-span-4">
+            <div className="flex flex-col justify-between rounded-3xl border border-black/5 bg-white p-4 sm:p-6 md:p-8 shadow-apple-soft transition-all hover:-translate-y-1 hover:border-red-500/30 hover:shadow-lg lg:col-span-4">
               <div>
                 <div className="mb-6">
                   <span className="rounded-full bg-rose-100/60 px-3 py-1 font-mono text-[11px] text-rose-800">Hourly Intraday</span>
@@ -336,7 +342,7 @@ export default function HomePage() {
             </div>
 
             {/* Option Index */}
-            <div className="flex flex-col justify-between rounded-3xl border border-black/5 bg-white p-4 sm:p-6 md:p-8 shadow-apple-soft transition-all hover:border-red-500/30 lg:col-span-7">
+            <div className="flex flex-col justify-between rounded-3xl border border-black/5 bg-white p-4 sm:p-6 md:p-8 shadow-apple-soft transition-all hover:-translate-y-1 hover:border-red-500/30 hover:shadow-lg lg:col-span-7">
               <div>
                 <div className="mb-6">
                   <span className="rounded-full bg-slate-100 px-3 py-1 font-mono text-[11px] text-slate-700">1–2 Calls / Day</span>
@@ -355,7 +361,7 @@ export default function HomePage() {
             </div>
 
             {/* Option Stock */}
-            <div className="flex flex-col justify-between rounded-3xl border border-black/5 bg-white p-4 sm:p-6 md:p-8 shadow-apple-soft transition-all hover:border-red-500/30 lg:col-span-4">
+            <div className="flex flex-col justify-between rounded-3xl border border-black/5 bg-white p-4 sm:p-6 md:p-8 shadow-apple-soft transition-all hover:-translate-y-1 hover:border-red-500/30 hover:shadow-lg lg:col-span-4">
               <div>
                 <div className="mb-6">
                   <span className="rounded-full bg-red-100/50 px-3 py-1 font-mono text-[11px] text-red-800">Stock Derivative</span>
@@ -373,7 +379,7 @@ export default function HomePage() {
             </div>
 
             {/* Future */}
-            <div className="flex flex-col justify-between rounded-3xl border border-black/5 bg-white p-4 sm:p-6 md:p-8 shadow-apple-soft transition-all hover:border-red-500/30 lg:col-span-4">
+            <div className="flex flex-col justify-between rounded-3xl border border-black/5 bg-white p-4 sm:p-6 md:p-8 shadow-apple-soft transition-all hover:-translate-y-1 hover:border-red-500/30 hover:shadow-lg lg:col-span-4">
               <div>
                 <div className="mb-6">
                   <span className="rounded-full bg-rose-100/60 px-3 py-1 font-mono text-[11px] text-rose-800">Higher Risk</span>
@@ -408,7 +414,7 @@ export default function HomePage() {
             </div>
 
             {/* Cash Intraday */}
-            <div className="flex flex-col justify-between rounded-3xl border border-black/5 bg-white p-4 sm:p-6 md:p-8 shadow-apple-soft transition-all hover:border-red-500/30 lg:col-span-6">
+            <div className="flex flex-col justify-between rounded-3xl border border-black/5 bg-white p-4 sm:p-6 md:p-8 shadow-apple-soft transition-all hover:-translate-y-1 hover:border-red-500/30 hover:shadow-lg lg:col-span-6">
               <div>
                 <div className="mb-6">
                   <span className="rounded-full bg-red-100/50 px-3 py-1 font-mono text-[11px] text-red-800">Same-Session</span>
@@ -426,7 +432,7 @@ export default function HomePage() {
             </div>
 
             {/* MCX */}
-            <div className="flex flex-col justify-between rounded-3xl border border-black/5 bg-white p-4 sm:p-6 md:p-8 shadow-apple-soft transition-all hover:border-red-500/30 lg:col-span-6">
+            <div className="flex flex-col justify-between rounded-3xl border border-black/5 bg-white p-4 sm:p-6 md:p-8 shadow-apple-soft transition-all hover:-translate-y-1 hover:border-red-500/30 hover:shadow-lg lg:col-span-6">
               <div>
                 <div className="mb-6">
                   <span className="rounded-full bg-amber-100/50 px-3 py-1 font-mono text-[11px] text-amber-800">MCX Exchange</span>
@@ -453,11 +459,11 @@ export default function HomePage() {
       </section>
 
       {/* ============ WHY CHOOSE US — DARK BENTO ============ */}
-      <section className="relative overflow-hidden border-t border-white/10 bg-[#0A0B0E] py-14 sm:py-24 text-white">
+      <section className="relative overflow-hidden border-t border-white/10 bg-[#0A0B0E] py-10 sm:py-24 text-white">
         <div className="pointer-events-none absolute -top-40 right-10 h-[620px] w-[620px] rounded-full bg-red-500/10 blur-[160px]" />
         <div className="pointer-events-none absolute bottom-0 left-5 h-[560px] w-[560px] rounded-full bg-red-500/10 blur-[150px]" />
-        <div className="relative mx-auto max-w-7xl px-6">
-          <div className="mb-6 sm:mb-12 flex flex-col gap-3 sm:gap-6 md:flex-row md:items-end md:justify-between">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="reveal mb-6 sm:mb-12 flex flex-col gap-3 sm:gap-6 md:flex-row md:items-end md:justify-between">
             <div>
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 font-mono text-xs font-semibold uppercase tracking-widest text-red-300 shadow-sm">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-red-400" /> Why Choose Us • Our Principles
@@ -475,9 +481,9 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 items-stretch gap-3 sm:gap-6 lg:grid-cols-12">
+          <div className="reveal grid grid-cols-1 items-stretch gap-3 sm:gap-6 lg:grid-cols-12">
             {/* Mission & vision */}
-            <div className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-[#121316] p-4 sm:p-6 md:p-8 lg:p-10 shadow-apple-dark lg:col-span-8">
+            <div className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-[#121316] p-4 transition-all duration-300 hover:-translate-y-1 sm:p-6 md:p-8 lg:p-10 shadow-apple-dark lg:col-span-8">
               <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 bg-gradient-to-bl from-red-500/20 via-rose-500/10 to-transparent opacity-80 blur-3xl transition-opacity group-hover:opacity-100" />
               <div className="relative z-10">
                 <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
@@ -526,7 +532,7 @@ export default function HomePage() {
             </div>
 
             {/* SEBI rigor */}
-            <div className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-[#16181d] p-4 sm:p-6 md:p-8 shadow-apple-dark lg:col-span-4">
+            <div className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-[#16181d] p-4 transition-all duration-300 hover:-translate-y-1 sm:p-6 md:p-8 shadow-apple-dark lg:col-span-4">
               <div className="pointer-events-none absolute -right-16 -top-16 h-52 w-52 rounded-full bg-red-500/10 blur-2xl transition-all group-hover:bg-red-500/20" />
               <div className="relative z-10">
                 <div className="mb-6">
@@ -627,9 +633,9 @@ export default function HomePage() {
       </section>
 
       {/* ============ METHODOLOGY ============ */}
-      <section className="border-y border-slate-200/70 bg-white py-14 sm:py-24" id="methodology">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mx-auto mb-8 sm:mb-16 max-w-3xl text-center">
+      <section className="border-y border-slate-200/70 bg-white py-10 sm:py-24" id="methodology">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="reveal mx-auto mb-8 sm:mb-16 max-w-3xl text-center">
             <span className="mb-3 block font-mono text-xs font-semibold uppercase tracking-widest text-red-600">
               Systematic Engineering
             </span>
@@ -649,8 +655,12 @@ export default function HomePage() {
               { n: "03", tag: "INTEGRITY", title: "Regulatory Trust", desc: "Zero guaranteed returns or profit-sharing. Fully compliant with SEBI RA Regulations." },
               { n: "04", tag: "DISPATCH", title: "Direct Execution", desc: "Live dashboard delivery guarantees direct access with zero social-channel distraction." },
               { n: "05", tag: "PSYCHOLOGY", title: "Stress-Free Alpha", desc: "Systematic, rules-based research removes emotional bias, FOMO and revenge trading." },
-            ].map((p) => (
-              <div key={p.n} className="shadow-apple-soft rounded-2xl border border-black/5 bg-[#F5F5F7] p-4 sm:p-6 transition-all hover:bg-white">
+            ].map((p, i) => (
+              <div
+                key={p.n}
+                className="reveal shadow-apple-soft rounded-2xl border border-black/5 bg-[#F5F5F7] p-4 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-lg"
+                style={{ "--reveal-delay": `${i * 90}ms` } as React.CSSProperties}
+              >
                 <span className="mb-3 block font-mono text-xs font-bold text-red-600">{p.n} / {p.tag}</span>
                 <h4 className="mb-2 text-base font-bold text-slate-900">{p.title}</h4>
                 <p className="text-xs leading-relaxed text-slate-600">{p.desc}</p>
@@ -691,9 +701,9 @@ export default function HomePage() {
       </section>
 
       {/* ============ TESTIMONIALS ============ */}
-      <section className="bg-[#F5F5F7] py-12 sm:py-20">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-6 sm:mb-12 flex flex-col gap-3 sm:gap-6 md:flex-row md:items-end md:justify-between">
+      <section className="bg-[#F5F5F7] py-8 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="reveal mb-6 sm:mb-12 flex flex-col gap-3 sm:gap-6 md:flex-row md:items-end md:justify-between">
             <div>
               <span className="mb-2 block font-mono text-xs font-semibold uppercase tracking-widest text-red-600">
                 Verified Experience
@@ -717,7 +727,11 @@ export default function HomePage() {
                 role: "Advisory Client",
               },
             ].map((t, i) => (
-              <div key={i} className="shadow-apple-soft flex flex-col justify-between rounded-3xl border border-black/5 bg-white p-4 sm:p-6 md:p-8">
+              <div
+                key={i}
+                className="reveal shadow-apple-soft flex flex-col justify-between rounded-3xl border border-black/5 bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-6 md:p-8"
+                style={{ "--reveal-delay": `${i * 120}ms` } as React.CSSProperties}
+              >
                 <div className="space-y-4">
                   <div className="flex items-center gap-1 text-amber-400">
                     {Array.from({ length: 5 }).map((_, i) => (
@@ -737,9 +751,9 @@ export default function HomePage() {
       </section>
 
       {/* ============ COMPLIANCE / STATUTORY CARD ============ */}
-      <section className="border-t border-slate-200/80 bg-white py-12 sm:py-20" id="compliance">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#0A0B0E] p-4 sm:p-8 lg:p-12 text-white shadow-2xl">
+      <section className="border-t border-slate-200/80 bg-white py-8 sm:py-20" id="compliance">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="reveal relative overflow-hidden rounded-3xl border border-white/10 bg-[#0A0B0E] p-4 sm:p-8 lg:p-12 text-white shadow-2xl">
             <div className="flex flex-col items-start justify-between gap-5 sm:gap-8 md:gap-12 lg:flex-row">
               <div className="flex flex-col gap-3 sm:gap-6 lg:w-1/2">
                 <div className="flex items-center gap-4">

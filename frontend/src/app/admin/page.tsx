@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
@@ -48,10 +49,10 @@ export default function AdminPage() {
           refresh();
           api.get<Plan[]>("/plans").then(setPlans).catch(() => {});
         } else {
-          router.replace("/dashboard");
+          router.replace("/");
         }
       })
-      .catch(() => router.replace("/login?next=/admin"));
+      .catch(() => router.replace("/admin/login?next=/admin"));
   }, [router]);
 
   const publish = async (e: React.FormEvent) => {
@@ -107,7 +108,12 @@ export default function AdminPage() {
   return (
     <section className="bg-slate-50 py-10">
       <div className="container-site space-y-8">
-        <h1 className="text-2xl font-bold text-navy-900">Analyst Console</h1>
+        <div className="flex items-center justify-between">
+          <h1 className="text-2xl font-bold text-navy-900">Analyst Console</h1>
+          <Link href="/admin/blog" className="btn-dark">
+            Manage Blog
+          </Link>
+        </div>
 
         {stats && (
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
@@ -118,7 +124,7 @@ export default function AdminPage() {
               { label: "Open Tickets", value: stats.open_tickets },
             ].map((s) => (
               <div key={s.label} className="card text-center">
-                <p className="text-3xl font-extrabold text-navy-900">{s.value}</p>
+                <p className="text-2xl font-extrabold text-navy-900 sm:text-3xl">{s.value}</p>
                 <p className="mt-1 text-sm text-slate-500">{s.label}</p>
               </div>
             ))}

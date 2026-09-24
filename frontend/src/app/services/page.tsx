@@ -31,13 +31,16 @@ function SpecRow({ label, value }: { label: string; value: string }) {
 }
 
 function MandateCard({
-  span, tag, badge, title, desc, spec, footNote,
+  span, tag, badge, title, desc, spec, footNote, delay,
 }: {
   span: string; tag: string; badge: string; title: string; desc: string;
-  spec: { label: string; value: string }; footNote: string;
+  spec: { label: string; value: string }; footNote: string; delay?: number;
 }) {
   return (
-    <div className={`${span} group flex flex-col justify-between rounded-3xl border border-slate-200/80 bg-white p-4 sm:p-6 shadow-sm transition-all hover:border-slate-300 hover:shadow-md`}>
+    <div
+      className={`${span} reveal group flex flex-col justify-between rounded-3xl border border-slate-200/80 bg-white p-4 sm:p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-lg`}
+      style={{ "--reveal-delay": `${delay ?? 0}ms` } as React.CSSProperties}
+    >
       <div className="space-y-3">
         <TileHeader tag={tag} badge={badge} />
         <h3 className="text-lg font-semibold tracking-tight text-slate-950">{title}</h3>
@@ -59,18 +62,18 @@ export default function ServicesPage() {
   return (
     <div className="w-full bg-[#fbfbfd]">
       {/* Hero */}
-      <section className="mx-auto max-w-7xl px-6 pb-6 pt-10">
-        <div className="mx-auto mb-8 flex max-w-4xl flex-col items-center space-y-3 text-center">
+      <section className="mx-auto max-w-7xl px-4 pb-6 pt-6 sm:px-6 sm:pt-10">
+        <div className="mx-auto mb-5 flex max-w-4xl flex-col items-center space-y-2 text-center sm:mb-8 sm:space-y-3">
           <div className="inline-flex items-center gap-2 rounded-full border border-slate-200/60 bg-surface-container-low px-3.5 py-1 shadow-sm">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-secondary" />
-            <span className="font-mono text-xs font-medium uppercase tracking-wider text-slate-600">
+            <span className="font-mono text-[10px] font-medium uppercase tracking-wider text-slate-600 sm:text-xs">
               SEBI Reg. INH000020660 • Disciplined Advisory Desks
             </span>
           </div>
-          <h1 className="text-3xl font-semibold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+          <h1 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
             All 12 Research Services. Pure Focus.
           </h1>
-          <p className="max-w-2xl text-lg leading-relaxed text-slate-600">
+          <p className="max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-lg">
             Alpha Insiight is one of the innovative research service providers in
             India — technical, research-driven views delivered across Indian
             equities, derivatives, and commodities, under one roof.

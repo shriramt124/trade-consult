@@ -5,39 +5,39 @@ export const metadata: Metadata = { title: "Payment" };
 
 export default function PaymentPage() {
   return (
-    <div className="bg-slate-50 py-16">
+    <div className="bg-slate-50 py-8 sm:py-16">
       <div className="container-site max-w-4xl">
         <h1 className="section-title">Our Payment Options</h1>
-        <p className="mt-2 text-sm text-slate-500">Alpha Insiight</p>
+        <p className="mt-2 text-xs text-slate-500 sm:text-sm">Alpha Insiight</p>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2">
+        <div className="reveal mt-6 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-6">
           {/* Scan & Pay */}
-          <div className="flex flex-col items-center rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm">
+          <div className="flex flex-col items-center rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:rounded-2xl sm:p-8">
             <span className="font-mono text-xs font-semibold uppercase tracking-widest text-red-700">
               UPI
             </span>
-            <h2 className="mt-1 text-lg font-semibold text-navy-900">Scan &amp; Pay</h2>
+            <h2 className="mt-1 text-base font-semibold text-navy-900 sm:text-lg">Scan &amp; Pay</h2>
 
-            <div className="relative mt-5 h-48 w-48 overflow-hidden rounded-xl border border-slate-100">
+            <div className="relative mt-4 h-40 w-40 overflow-hidden rounded-xl border border-slate-100 sm:mt-5 sm:h-48 sm:w-48">
               <Image src="/qr_code_clean.png" alt="Alpha Insiight UPI QR code" fill className="object-contain" />
             </div>
 
-            <p className="mt-5 text-xs font-medium uppercase tracking-wide text-slate-400">UPI ID</p>
-            <p className="mt-1 select-all font-mono text-sm font-semibold text-navy-900">
+            <p className="mt-4 text-xs font-medium uppercase tracking-wide text-slate-400 sm:mt-5">UPI ID</p>
+            <p className="mt-1 select-all font-mono text-xs font-semibold text-navy-900 sm:text-sm">
               harshitkumar.ra@validkpay
             </p>
 
-            <p className="mt-4 text-xs text-slate-400">BHIM · GPay · PhonePe · Paytm</p>
+            <p className="mt-3 text-xs text-slate-400 sm:mt-4">BHIM · GPay · PhonePe · Paytm</p>
           </div>
 
           {/* Bank Transfer */}
-          <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:rounded-2xl sm:p-8">
             <span className="font-mono text-xs font-semibold uppercase tracking-widest text-red-700">
               NEFT / IMPS
             </span>
-            <h2 className="mt-1 text-lg font-semibold text-navy-900">Bank Transfer</h2>
+            <h2 className="mt-1 text-base font-semibold text-navy-900 sm:text-lg">Bank Transfer</h2>
 
-            <dl className="mt-5 space-y-4 text-sm">
+            <dl className="mt-4 space-y-3 text-xs sm:mt-5 sm:space-y-4 sm:text-sm">
               <div>
                 <dt className="text-slate-500">Bank</dt>
                 <dd className="mt-0.5 font-semibold text-navy-900">Kotak Mahindra Bank</dd>
@@ -54,7 +54,7 @@ export default function PaymentPage() {
           </div>
         </div>
 
-        <p className="mt-8 text-center text-sm leading-relaxed text-slate-600">
+        <p className="mt-6 text-center text-xs leading-relaxed text-slate-600 sm:mt-8 sm:text-sm">
           Prefer to pay online instead? Every desk on our{" "}
           <a href="/pricing" className="font-medium text-red-700 hover:underline">
             pricing page

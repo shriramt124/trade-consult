@@ -1,4 +1,3 @@
-import random
 from datetime import datetime, timedelta, timezone
 
 from jose import JWTError, jwt
@@ -22,10 +21,6 @@ def decode_access_token(token: str) -> dict | None:
         return jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
     except JWTError:
         return None
-
-
-def generate_otp() -> str:
-    return f"{random.randint(0, 999999):06d}"
 
 
 def hash_password(password: str) -> str:

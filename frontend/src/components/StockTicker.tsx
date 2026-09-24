@@ -35,15 +35,17 @@ export default function StockTicker() {
     const el = container.current;
     if (!el || el.childElementCount > 0) return;
 
+    const isSmallScreen = window.innerWidth < 640;
+
     const script = document.createElement("script");
     script.src =
       "https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
     script.async = true;
     script.innerHTML = JSON.stringify({
       symbols: SYMBOLS,
-      showSymbolLogo: true,
+      showSymbolLogo: !isSmallScreen,
       isTransparent: false,
-      displayMode: "adaptive",
+      displayMode: isSmallScreen ? "compact" : "adaptive",
       colorTheme: "dark",
       locale: "in",
     });

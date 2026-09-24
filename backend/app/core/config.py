@@ -15,16 +15,17 @@ class Settings(BaseSettings):
 
     DATABASE_URL: str = "sqlite:///./trade_consult.db"
 
+    UPLOAD_DIR: str = "static/uploads"
+    MAX_UPLOAD_MB: int = 5
+
     BACKEND_CORS_ORIGINS: str = "http://localhost:3000"
 
-    # Auth
-    DEV_RETURN_OTP: bool = True
-    OTP_EXPIRY_MINUTES: int = 5
-    OTP_RESEND_COOLDOWN_SECONDS: int = 45
-    OTP_MAX_ATTEMPTS: int = 5
+    # Admin console login (email + password)
     ADMIN_PHONE: str = "9999999999"
+    ADMIN_EMAIL: str = "admin@alphainsiight.com"
+    ADMIN_PASSWORD: str = "change-me-admin-pass"
 
-    # SMS - MSG91
+    # SMS - MSG91 (used to alert subscribers about new calls)
     MSG91_AUTH_KEY: str = ""
     MSG91_SENDER_ID: str = ""
     MSG91_TEMPLATE_ID: str = ""
@@ -33,18 +34,9 @@ class Settings(BaseSettings):
     WHATSAPP_API_URL: str = ""
     WHATSAPP_API_TOKEN: str = ""
 
-    # Razorpay
-    RAZORPAY_KEY_ID: str = ""
-    RAZORPAY_KEY_SECRET: str = ""
-    RAZORPAY_WEBHOOK_SECRET: str = ""
-
     @property
     def cors_origins(self) -> list[str]:
         return [o.strip() for o in self.BACKEND_CORS_ORIGINS.split(",") if o.strip()]
-
-    @property
-    def razorpay_configured(self) -> bool:
-        return bool(self.RAZORPAY_KEY_ID and self.RAZORPAY_KEY_SECRET)
 
 
 @lru_cache

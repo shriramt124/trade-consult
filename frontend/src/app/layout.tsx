@@ -7,6 +7,7 @@ import TopBar from "@/components/site/TopBar";
 import StockTicker from "@/components/StockTicker";
 import DisclaimerPopup from "@/components/DisclaimerPopup";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains" });
@@ -45,6 +46,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} bg-white font-sans text-slate-900 selection:bg-red-600/20 selection:text-red-900`}>
+        <ScrollReveal />
         <DisclaimerPopup />
         <StockTicker />
         <TopBar />

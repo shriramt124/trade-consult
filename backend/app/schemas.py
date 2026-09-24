@@ -6,25 +6,15 @@ from app.models import CallAction, CallStatus, UserRole
 
 
 # ---------- Auth ----------
-class OTPRequest(BaseModel):
-    phone: str = Field(..., min_length=10, max_length=15)
-
-
-class OTPVerify(BaseModel):
-    phone: str = Field(..., min_length=10, max_length=15)
-    code: str = Field(..., min_length=6, max_length=6)
-    name: str | None = None
-
-
 class Token(BaseModel):
     access_token: str
     token_type: str = "bearer"
     user: "UserOut"
 
 
-class OTPResponse(BaseModel):
-    message: str
-    dev_otp: str | None = None  # only present when DEV_RETURN_OTP=true
+class AdminLoginRequest(BaseModel):
+    email: str = Field(..., min_length=3, max_length=255)
+    password: str = Field(..., min_length=6, max_length=128)
 
 
 # ---------- Users ----------
@@ -37,11 +27,6 @@ class UserOut(BaseModel):
     email: str | None
     role: UserRole
     kyc_status: str
-
-
-class UserUpdate(BaseModel):
-    name: str | None = None
-    email: str | None = None
 
 
 # ---------- Plans ----------
@@ -109,30 +94,6 @@ class TrackRecord(BaseModel):
     calls: list[RecommendationOut]
 
 
-# ---------- Subscriptions / Payments ----------
-class SubscribeRequest(BaseModel):
-    plan_id: int
-
-
-class OrderOut(BaseModel):
-    order_id: str
-    amount_paise: int
-    currency: str = "INR"
-    key_id: str | None = None
-    subscription_id: int
-
-
-class SubscriptionOut(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
-
-    id: int
-    plan_id: int
-    status: str
-    starts_at: datetime | None
-    ends_at: datetime | None
-    plan: PlanOut
-
-
 # ---------- Tickets ----------
 class TicketCreate(BaseModel):
     name: str = Field(..., min_length=2, max_length=120)
@@ -179,6 +140,41 @@ class BlogPostListOut(BaseModel):
     cover_image: str | None
     author: str
     published_at: datetime | None
+
+
+class BlogPostAdminOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    slug: str
+    title: str
+    excerpt: str
+    content: str
+    cover_image: str | None
+    author: str
+    is_published: bool
+    published_at: datetime | None
+    created_at: datetime
+
+
+class BlogPostCreate(BaseModel):
+    title: str = Field(..., min_length=1, max_length=250)
+    slug: str | None = Field(None, max_length=200)
+    excerpt: str = Field("", max_length=500)
+    content: str = ""
+    cover_image: str | None = None
+    author: str = Field("Research Desk", max_length=120)
+    is_published: bool = False
+
+
+class BlogPostUpdate(BaseModel):
+    title: str | None = Field(None, min_length=1, max_length=250)
+    slug: str | None = Field(None, max_length=200)
+    excerpt: str | None = Field(None, max_length=500)
+    content: str | None = None
+    cover_image: str | None = None
+    author: str | None = Field(None, max_length=120)
+    is_published: bool | None = None
 
 
 # ---------- Compliance ----------

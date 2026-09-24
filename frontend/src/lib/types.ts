@@ -66,3 +66,19 @@ export interface BlogPost {
   author: string;
   published_at: string | null;
 }
+
+export interface BlogPostAdmin extends BlogPost {
+  content: string;
+  is_published: boolean;
+  created_at: string;
+}
+
+export interface BlogPostInput {
+  title: string;
+  slug?: string;
+  excerpt: string;
+  content: string;
+  cover_image: string | null;
+  author: string;
+  is_published: boolean;
+}
