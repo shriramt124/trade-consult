@@ -26,22 +26,22 @@ export default async function TrackRecordPage() {
 
   return (
     <>
-      <section className="bg-navy-950 py-20">
+      <section className="bg-navy-950 py-10 sm:py-20">
         <div className="container-site">
           <p className="eyebrow">Radical Transparency</p>
-          <h1 className="mt-2 text-4xl font-extrabold text-white sm:text-5xl">
+          <h1 className="mt-2 text-2xl font-extrabold text-white sm:text-5xl">
             Verified Track Record
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-slate-300">
+          <p className="mt-2 max-w-2xl text-sm text-slate-300 sm:mt-4 sm:text-lg">
             Every closed call — wins and losses — published with entry, exit and
             timestamps. No cherry-picking. Ever.
           </p>
         </div>
       </section>
 
-      <section className="bg-slate-50 py-16">
+      <section className="bg-slate-50 py-8 sm:py-16">
         <div className="container-site">
-          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4">
             {[
               { label: "Closed Calls", value: stats.total_closed },
               { label: "Targets Hit", value: stats.target_hit },
@@ -49,13 +49,13 @@ export default async function TrackRecordPage() {
               { label: "Avg Return / Call", value: `${stats.avg_return_pct}%` },
             ].map((s) => (
               <div key={s.label} className="card text-center">
-                <p className="text-3xl font-extrabold text-navy-900">{s.value}</p>
-                <p className="mt-1 text-sm text-slate-500">{s.label}</p>
+                <p className="text-xl font-extrabold text-navy-900 sm:text-3xl">{s.value}</p>
+                <p className="mt-1 text-xs text-slate-500 sm:text-sm">{s.label}</p>
               </div>
             ))}
           </div>
 
-          <div className="card mt-10 overflow-x-auto p-0">
+          <div className="card mt-6 overflow-x-auto p-0 sm:mt-10">
             <table className="w-full min-w-[720px] text-left text-sm">
               <thead className="border-b border-slate-200 bg-slate-50 text-xs uppercase tracking-wider text-slate-500">
                 <tr>

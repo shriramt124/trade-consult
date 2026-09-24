@@ -5,60 +5,60 @@ export default function HomePage() {
   return (
     <>
       {/* ============ HERO: Obsidian Keynote & Liquid Glass ============ */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#F5F5F7] via-white to-[#F5F5F7] pb-24 pt-10">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#F5F5F7] via-white to-[#F5F5F7] pb-14 pt-6 sm:pb-24 sm:pt-10">
         <div className="pointer-events-none absolute -top-4 left-1/2 -z-10 h-[560px] w-[1000px] -translate-x-1/2 bg-gradient-to-tr from-red-200/50 via-rose-100/60 to-transparent blur-[140px]" />
         <div className="pointer-events-none absolute -left-16 top-1/3 -z-10 h-96 w-96 bg-red-500/10 blur-[130px]" />
         <div className="pointer-events-none absolute -right-16 top-1/2 -z-10 h-96 w-96 bg-red-500/10 blur-[130px]" />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6">
+        <div className="relative z-10 mx-auto max-w-7xl px-3 sm:px-6">
           {/* Center pill badge */}
-          <div className="mb-5 flex justify-center">
-            <div className="glass-pill shadow-apple-soft inline-flex items-center gap-2.5 rounded-full border border-black/5 px-4 py-1.5 text-xs font-medium text-slate-800 transition-all hover:border-red-500/30">
-              <span className="relative flex h-2 w-2">
+          <div className="mb-3 flex justify-center sm:mb-5">
+            <div className="glass-pill shadow-apple-soft inline-flex flex-wrap items-center justify-center gap-1.5 rounded-full border border-black/5 px-3 py-1 text-[10px] font-medium text-slate-800 transition-all hover:border-red-500/30 sm:gap-2.5 sm:px-4 sm:py-1.5 sm:text-xs">
+              <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-red-600" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-red-600 sm:h-2 sm:w-2" />
               </span>
               <span className="font-medium text-slate-700">SEBI Registered Research Analyst</span>
-              <span className="text-slate-300">•</span>
+              <span className="hidden text-slate-300 sm:inline">•</span>
               <span className="font-mono font-semibold text-red-700">Reg. INH000020660</span>
-              <span className="material-symbols-outlined text-[15px] text-red-600">verified</span>
+              <span className="material-symbols-outlined text-[13px] text-red-600 sm:text-[15px]">verified</span>
             </div>
           </div>
 
           {/* Headline & subtitle */}
-          <div className="mx-auto mb-12 max-w-4xl text-center">
-            <h1 className="mb-5 text-4xl font-extrabold leading-[1.06] tracking-tight text-slate-950 sm:text-6xl lg:text-7xl">
+          <div className="mx-auto mb-8 max-w-4xl text-center sm:mb-12">
+            <h1 className="mb-3 text-3xl font-extrabold leading-[1.08] tracking-tight text-slate-950 sm:mb-5 sm:text-6xl lg:text-7xl">
               Engineered for Clarity. <br className="hidden sm:inline" />
               <span className="bg-gradient-to-r from-slate-950 via-red-700 to-red-500 bg-clip-text text-transparent">
                 Driven by Alpha.
               </span>
             </h1>
-            <p className="mx-auto max-w-2xl text-base font-normal leading-relaxed text-slate-600 sm:text-lg lg:text-xl">
+            <p className="mx-auto max-w-2xl text-sm font-normal leading-relaxed text-slate-600 sm:text-lg lg:text-xl">
               Institutional-grade technical market research, disciplined risk
               allocations, and pure execution signals delivered directly to your live
               dashboard, SMS and WhatsApp.
             </p>
 
-            <div className="mt-7 flex flex-wrap items-center justify-center gap-3.5">
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-2.5 sm:mt-7 sm:gap-3.5">
               <Link
                 href="/services"
-                className="apple-red-gradient flex items-center gap-2 rounded-full px-6 py-3 text-xs font-semibold text-white shadow-lg shadow-red-600/30 transition-all hover:shadow-red-600/50 hover:brightness-110 active:scale-95 sm:text-sm"
+                className="apple-red-gradient flex items-center gap-1.5 rounded-full px-4 py-2.5 text-[11px] font-semibold text-white shadow-lg shadow-red-600/30 transition-all hover:shadow-red-600/50 hover:brightness-110 active:scale-95 sm:gap-2 sm:px-6 sm:py-3 sm:text-sm"
               >
                 <span>Explore 12 Research Services</span>
-                <span className="material-symbols-outlined text-[18px]">arrow_downward</span>
+                <span className="material-symbols-outlined text-[16px] sm:text-[18px]">arrow_downward</span>
               </Link>
               <Link
                 href="/disclosure"
-                className="shadow-apple-soft flex items-center gap-2 rounded-full border border-white/10 bg-slate-950 px-6 py-3 text-xs font-semibold text-white transition-all hover:bg-slate-900 active:scale-95 sm:text-sm"
+                className="shadow-apple-soft flex items-center gap-1.5 rounded-full border border-white/10 bg-slate-950 px-4 py-2.5 text-[11px] font-semibold text-white transition-all hover:bg-slate-900 active:scale-95 sm:gap-2 sm:px-6 sm:py-3 sm:text-sm"
               >
-                <span className="material-symbols-outlined text-[18px] text-red-400">verified_user</span>
+                <span className="material-symbols-outlined text-[16px] text-red-400 sm:text-[18px]">verified_user</span>
                 <span>Verify SEBI Mandate</span>
               </Link>
             </div>
           </div>
 
           {/* 3D spatial hardware stage */}
-          <div className="relative -mx-6 max-w-6xl pb-6 sm:mx-auto">
+          <div className="relative -mx-3 max-w-6xl pb-6 sm:mx-auto">
             <div className="group relative overflow-hidden rounded-none border border-white/15 bg-gradient-to-b from-slate-900 via-[#121316] to-[#0A0C10] p-3 shadow-2xl sm:rounded-3xl sm:p-5 mb-5">
               <div className="pointer-events-none absolute -right-20 -top-20 h-80 w-80 rounded-full bg-red-500/15 blur-3xl" />
               <div className="pointer-events-none absolute -bottom-20 -left-20 h-80 w-80 rounded-full bg-red-500/10 blur-3xl" />
@@ -142,13 +142,13 @@ export default function HomePage() {
                 { label: "Execution Discipline", icon: "tune", value: "Strict SL & 1:2.8+ Targets", sub: "Pre-calculated mathematical R:R" },
                 { label: "Regulatory Mandate", icon: "verified_user", value: "INH000020660", sub: "SEBI RA • Fiduciary Compliance", mono: true },
               ].map((m) => (
-                <div key={m.label} className="glass-light shadow-apple-soft rounded-2xl border border-slate-200/70 p-3.5 transition-all hover:bg-white sm:p-4">
-                  <div className="mb-1 flex items-center justify-between">
-                    <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-slate-500">{m.label}</span>
-                    <span className="material-symbols-outlined text-[16px] text-red-600">{m.icon}</span>
+                <div key={m.label} className="glass-light shadow-apple-soft rounded-xl border border-slate-200/70 p-2.5 transition-all hover:bg-white sm:rounded-2xl sm:p-4">
+                  <div className="mb-1 flex items-center justify-between gap-1">
+                    <span className="font-mono text-[9px] font-semibold uppercase tracking-wider text-slate-500 sm:text-[10px]">{m.label}</span>
+                    <span className="material-symbols-outlined text-[14px] text-red-600 sm:text-[16px]">{m.icon}</span>
                   </div>
-                  <span className={`block break-words text-sm font-bold sm:text-lg ${m.accent ? "text-red-700" : "text-slate-900"} ${m.mono ? "font-mono" : ""}`}>{m.value}</span>
-                  <span className="mt-0.5 block text-[11px] text-slate-500">{m.sub}</span>
+                  <span className={`block break-words text-xs font-bold sm:text-lg ${m.accent ? "text-red-700" : "text-slate-900"} ${m.mono ? "font-mono" : ""}`}>{m.value}</span>
+                  <span className="mt-0.5 block text-[10px] text-slate-500 sm:text-[11px]">{m.sub}</span>
                 </div>
               ))}
             </div>
@@ -157,10 +157,10 @@ export default function HomePage() {
       </section>
 
       {/* ============ DELIVERY SPOTLIGHT: Panoramic Triple-Visual Stream ============ */}
-      <section className="relative overflow-hidden bg-slate-950 py-12 sm:py-20 text-white">
+      <section className="relative overflow-hidden bg-slate-950 py-8 sm:py-20 text-white">
         <div className="pointer-events-none absolute -top-32 right-1/4 h-96 w-96 bg-red-500/10 blur-[130px]" />
         <div className="pointer-events-none absolute bottom-0 left-10 h-96 w-96 bg-red-600/10 blur-[140px]" />
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="mx-auto mb-8 sm:mb-16 max-w-3xl text-center">
             <span className="mb-3 block font-mono text-xs font-semibold uppercase tracking-widest text-red-400">
               Delivery Infrastructure
@@ -229,8 +229,8 @@ export default function HomePage() {
       </section>
 
       {/* ============ BENTO: ADVISORY DESKS ============ */}
-      <section className="bg-[#F5F5F7] py-14 sm:py-24" id="services">
-        <div className="mx-auto max-w-7xl px-6">
+      <section className="bg-[#F5F5F7] py-10 sm:py-24" id="services">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="mb-6 sm:mb-12 flex flex-col gap-3 sm:gap-6 md:flex-row md:items-end md:justify-between">
             <div>
               <div className="mb-2 font-mono text-xs font-semibold uppercase tracking-widest text-red-700">
@@ -453,10 +453,10 @@ export default function HomePage() {
       </section>
 
       {/* ============ WHY CHOOSE US — DARK BENTO ============ */}
-      <section className="relative overflow-hidden border-t border-white/10 bg-[#0A0B0E] py-14 sm:py-24 text-white">
+      <section className="relative overflow-hidden border-t border-white/10 bg-[#0A0B0E] py-10 sm:py-24 text-white">
         <div className="pointer-events-none absolute -top-40 right-10 h-[620px] w-[620px] rounded-full bg-red-500/10 blur-[160px]" />
         <div className="pointer-events-none absolute bottom-0 left-5 h-[560px] w-[560px] rounded-full bg-red-500/10 blur-[150px]" />
-        <div className="relative mx-auto max-w-7xl px-6">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
           <div className="mb-6 sm:mb-12 flex flex-col gap-3 sm:gap-6 md:flex-row md:items-end md:justify-between">
             <div>
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 font-mono text-xs font-semibold uppercase tracking-widest text-red-300 shadow-sm">
@@ -627,8 +627,8 @@ export default function HomePage() {
       </section>
 
       {/* ============ METHODOLOGY ============ */}
-      <section className="border-y border-slate-200/70 bg-white py-14 sm:py-24" id="methodology">
-        <div className="mx-auto max-w-7xl px-6">
+      <section className="border-y border-slate-200/70 bg-white py-10 sm:py-24" id="methodology">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="mx-auto mb-8 sm:mb-16 max-w-3xl text-center">
             <span className="mb-3 block font-mono text-xs font-semibold uppercase tracking-widest text-red-600">
               Systematic Engineering
@@ -691,8 +691,8 @@ export default function HomePage() {
       </section>
 
       {/* ============ TESTIMONIALS ============ */}
-      <section className="bg-[#F5F5F7] py-12 sm:py-20">
-        <div className="mx-auto max-w-7xl px-6">
+      <section className="bg-[#F5F5F7] py-8 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="mb-6 sm:mb-12 flex flex-col gap-3 sm:gap-6 md:flex-row md:items-end md:justify-between">
             <div>
               <span className="mb-2 block font-mono text-xs font-semibold uppercase tracking-widest text-red-600">
@@ -737,8 +737,8 @@ export default function HomePage() {
       </section>
 
       {/* ============ COMPLIANCE / STATUTORY CARD ============ */}
-      <section className="border-t border-slate-200/80 bg-white py-12 sm:py-20" id="compliance">
-        <div className="mx-auto max-w-7xl px-6">
+      <section className="border-t border-slate-200/80 bg-white py-8 sm:py-20" id="compliance">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#0A0B0E] p-4 sm:p-8 lg:p-12 text-white shadow-2xl">
             <div className="flex flex-col items-start justify-between gap-5 sm:gap-8 md:gap-12 lg:flex-row">
               <div className="flex flex-col gap-3 sm:gap-6 lg:w-1/2">

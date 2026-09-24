@@ -124,7 +124,7 @@ export default function AdminPage() {
               { label: "Open Tickets", value: stats.open_tickets },
             ].map((s) => (
               <div key={s.label} className="card text-center">
-                <p className="text-3xl font-extrabold text-navy-900">{s.value}</p>
+                <p className="text-2xl font-extrabold text-navy-900 sm:text-3xl">{s.value}</p>
                 <p className="mt-1 text-sm text-slate-500">{s.label}</p>
               </div>
             ))}

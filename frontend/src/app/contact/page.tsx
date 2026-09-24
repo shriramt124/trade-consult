@@ -57,21 +57,21 @@ export default function ContactPage() {
   return (
     <div className="bg-[#F5F5FA] py-10 sm:py-16 md:py-24">
       {/* Header */}
-      <div className="mx-auto max-w-3xl px-6 text-center">
+      <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
         <span className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 font-mono text-xs font-medium uppercase tracking-wider text-slate-600 shadow-sm">
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
           SEBI Reg. INH000020660
         </span>
-        <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-6xl">
+        <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-slate-950 sm:mt-5 sm:text-6xl">
           Get in touch.
         </h1>
-        <p className="mt-3 text-lg text-slate-500">
+        <p className="mt-2 text-sm text-slate-500 sm:mt-3 sm:text-lg">
           Direct regulatory &amp; advisory communication desk.
         </p>
       </div>
 
       {/* Desk card + form */}
-      <div className="mx-auto mt-14 grid max-w-6xl gap-4 sm:gap-6 md:gap-8 px-6 lg:grid-cols-2">
+      <div className="mx-auto mt-8 grid max-w-6xl gap-4 px-4 sm:mt-14 sm:gap-6 sm:px-6 md:gap-8 lg:grid-cols-2">
         {/* Direct desk */}
         <div className="flex flex-col rounded-3xl bg-navy-950 p-4 sm:p-6 md:p-8 text-white shadow-xl">
           <div className="flex items-start justify-between">
@@ -90,7 +90,7 @@ export default function ContactPage() {
           <div>
             <p className="font-mono text-xs uppercase tracking-wider text-slate-400">Priority Research Line</p>
             <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
-              <a href="tel:+919575519739" className="font-mono text-2xl font-bold text-white hover:text-red-300">
+              <a href="tel:+919575519739" className="font-mono text-lg font-bold text-white hover:text-red-300 sm:text-2xl">
                 +91 95755 19739
               </a>
               <a
@@ -142,7 +142,7 @@ export default function ContactPage() {
         {/* Form */}
         <div className="rounded-3xl bg-white p-4 sm:p-6 md:p-8 shadow-sm">
           {status === "done" ? (
-            <div className="flex h-full flex-col items-center justify-center py-10 text-center">
+            <div className="flex h-full flex-col items-center justify-center py-6 text-center sm:py-10">
               <h2 className="text-lg font-semibold text-navy-900">Message received</h2>
               <p className="mt-2 text-sm text-slate-600">
                 Your ticket number is <span className="font-mono font-semibold">{ticketNo}</span>.
@@ -217,7 +217,7 @@ export default function ContactPage() {
       </div>
 
       {/* Grievance redressal */}
-      <div className="mx-auto mt-16 max-w-6xl px-6">
+      <div className="mx-auto mt-8 max-w-6xl px-4 sm:mt-16 sm:px-6">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <span className="font-mono text-xs font-semibold uppercase tracking-wider text-slate-500">
             Statutory Grievance Redressal
@@ -225,10 +225,10 @@ export default function ContactPage() {
           <span className="font-mono text-xs text-slate-400">24h Internal SLA</span>
         </div>
 
-        <div className="mt-4 grid gap-4 sm:grid-cols-3">
+        <div className="mt-4 grid gap-3 sm:grid-cols-3 sm:gap-4">
           <a
             href="/grievance"
-            className="rounded-2xl bg-white p-5 shadow-sm transition hover:shadow-md"
+            className="rounded-xl bg-white p-4 shadow-sm transition hover:shadow-md sm:rounded-2xl sm:p-5"
           >
             <p className="text-sm font-semibold text-slate-900">Internal Desk</p>
             <p className="mt-0.5 text-xs text-slate-500">Compliance &amp; Principal Officer</p>
@@ -238,7 +238,7 @@ export default function ContactPage() {
             href="https://scores.sebi.gov.in"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-2xl bg-white p-5 shadow-sm transition hover:shadow-md"
+            className="rounded-xl bg-white p-4 shadow-sm transition hover:shadow-md sm:rounded-2xl sm:p-5"
           >
             <p className="text-sm font-semibold text-slate-900">SEBI SCORES 2.0</p>
             <p className="mt-0.5 text-xs text-slate-500">scores.sebi.gov.in</p>
@@ -248,7 +248,7 @@ export default function ContactPage() {
             href="https://smartodr.in"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-2xl bg-white p-5 shadow-sm transition hover:shadow-md"
+            className="rounded-xl bg-white p-4 shadow-sm transition hover:shadow-md sm:rounded-2xl sm:p-5"
           >
             <p className="text-sm font-semibold text-slate-900">SMART ODR</p>
             <p className="mt-0.5 text-xs text-slate-500">smartodr.in</p>

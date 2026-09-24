@@ -36,18 +36,18 @@ function Table({ head, rows }: { head: string[]; rows: (string | number)[][] }) 
 
 export default function ComplaintStatusPage() {
   return (
-    <div className="bg-slate-50 py-16">
-      <div className="container-site max-w-4xl space-y-10">
+    <div className="bg-slate-50 py-8 sm:py-16">
+      <div className="container-site max-w-4xl space-y-6 sm:space-y-10">
         <div>
           <h1 className="section-title">Complaint Status</h1>
-          <p className="mt-2 text-sm text-slate-500">
+          <p className="mt-2 text-xs text-slate-500 sm:text-sm">
             Data for the month ending March 2026, published in line with SEBI (Research
             Analysts) Regulations, 2014.
           </p>
         </div>
 
         <div className="card">
-          <h2 className="mb-4 text-lg font-semibold text-navy-900">This Month</h2>
+          <h2 className="mb-3 text-base font-semibold text-navy-900 sm:mb-4 sm:text-lg">This Month</h2>
           <Table
             head={["Sr. No.", "Received From", "Pending (Last Month)", "Received", "Total Pending", "Pending > 3 Months", "Avg. Resolution (Days)"]}
             rows={[
@@ -65,7 +65,7 @@ export default function ComplaintStatusPage() {
         </div>
 
         <div className="card">
-          <h2 className="mb-4 text-lg font-semibold text-navy-900">Trend of Monthly Disposal of Complaints</h2>
+          <h2 className="mb-3 text-base font-semibold text-navy-900 sm:mb-4 sm:text-lg">Trend of Monthly Disposal of Complaints</h2>
           <Table
             head={["Sr. No.", "Month", "Carried Forward", "Received", "Resolved", "Pending"]}
             rows={[
@@ -76,7 +76,7 @@ export default function ComplaintStatusPage() {
         </div>
 
         <div className="card">
-          <h2 className="mb-4 text-lg font-semibold text-navy-900">Trend of Annual Disposal of Complaints</h2>
+          <h2 className="mb-3 text-base font-semibold text-navy-900 sm:mb-4 sm:text-lg">Trend of Annual Disposal of Complaints</h2>
           <Table
             head={["Sr. No.", "Year", "Carried Forward", "Received", "Resolved", "Pending"]}
             rows={[

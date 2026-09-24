@@ -81,7 +81,7 @@ function AdminLoginForm() {
 
 export default function AdminLoginPage() {
   return (
-    <section className="flex min-h-[70vh] items-center justify-center bg-slate-50 px-4 py-16">
+    <section className="flex min-h-[70vh] items-center justify-center bg-slate-50 px-4 py-8 sm:py-16">
       <Suspense>
         <AdminLoginForm />
       </Suspense>
