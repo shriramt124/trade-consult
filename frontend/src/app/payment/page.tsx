@@ -10,9 +10,9 @@ export default function PaymentPage() {
         <h1 className="section-title">Our Payment Options</h1>
         <p className="mt-2 text-xs text-slate-500 sm:text-sm">Alpha Insiight</p>
 
-        <div className="mt-6 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-6">
+        <div className="reveal mt-6 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-6">
           {/* Scan & Pay */}
-          <div className="flex flex-col items-center rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm sm:rounded-2xl sm:p-8">
+          <div className="flex flex-col items-center rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:rounded-2xl sm:p-8">
             <span className="font-mono text-xs font-semibold uppercase tracking-widest text-red-700">
               UPI
             </span>
@@ -31,7 +31,7 @@ export default function PaymentPage() {
           </div>
 
           {/* Bank Transfer */}
-          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:rounded-2xl sm:p-8">
+          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:rounded-2xl sm:p-8">
             <span className="font-mono text-xs font-semibold uppercase tracking-widest text-red-700">
               NEFT / IMPS
             </span>

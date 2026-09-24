@@ -35,7 +35,7 @@ function findPlan(plans: Plan[], code: string) {
 
 function Card({ plan, periodLabel }: { plan: Plan; periodLabel: string }) {
   return (
-    <div className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-4 sm:rounded-2xl sm:p-6">
+    <div className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:rounded-2xl sm:p-6">
       <div>
         <div className="flex items-baseline gap-1.5">
           <span className="text-xl font-bold text-slate-950 sm:text-2xl">{formatINR(plan.price_paise)}</span>
@@ -67,7 +67,7 @@ function Card({ plan, periodLabel }: { plan: Plan; periodLabel: string }) {
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="mt-8 w-full text-left sm:mt-14">
+    <section className="reveal mt-8 w-full text-left sm:mt-14">
       <span className="font-mono text-xs font-semibold uppercase tracking-widest text-red-700">Our Pricing</span>
       <h2 className="mt-1 text-xl font-bold tracking-tight text-slate-950 sm:text-3xl">{title}</h2>
       <div className="mt-4 grid grid-cols-1 gap-3 sm:mt-6 sm:grid-cols-2 sm:gap-4">{children}</div>

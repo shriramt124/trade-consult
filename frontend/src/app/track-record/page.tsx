@@ -47,8 +47,12 @@ export default async function TrackRecordPage() {
               { label: "Targets Hit", value: stats.target_hit },
               { label: "Accuracy", value: `${stats.accuracy_pct}%` },
               { label: "Avg Return / Call", value: `${stats.avg_return_pct}%` },
-            ].map((s) => (
-              <div key={s.label} className="card text-center">
+            ].map((s, i) => (
+              <div
+                key={s.label}
+                className="card reveal text-center"
+                style={{ "--reveal-delay": `${i * 90}ms` } as React.CSSProperties}
+              >
                 <p className="text-xl font-extrabold text-navy-900 sm:text-3xl">{s.value}</p>
                 <p className="mt-1 text-xs text-slate-500 sm:text-sm">{s.label}</p>
               </div>

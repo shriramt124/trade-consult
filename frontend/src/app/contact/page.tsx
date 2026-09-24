@@ -73,7 +73,7 @@ export default function ContactPage() {
       {/* Desk card + form */}
       <div className="mx-auto mt-8 grid max-w-6xl gap-4 px-4 sm:mt-14 sm:gap-6 sm:px-6 md:gap-8 lg:grid-cols-2">
         {/* Direct desk */}
-        <div className="flex flex-col rounded-3xl bg-navy-950 p-4 sm:p-6 md:p-8 text-white shadow-xl">
+        <div className="reveal flex flex-col rounded-3xl bg-navy-950 p-4 transition-all duration-300 hover:-translate-y-1 sm:p-6 md:p-8 text-white shadow-xl">
           <div className="flex items-start justify-between">
             <div>
               <p className="font-mono text-xs uppercase tracking-wider text-slate-400">Direct Desk</p>
@@ -140,7 +140,10 @@ export default function ContactPage() {
         </div>
 
         {/* Form */}
-        <div className="rounded-3xl bg-white p-4 sm:p-6 md:p-8 shadow-sm">
+        <div
+          className="reveal rounded-3xl bg-white p-4 sm:p-6 md:p-8 shadow-sm"
+          style={{ "--reveal-delay": "100ms" } as React.CSSProperties}
+        >
           {status === "done" ? (
             <div className="flex h-full flex-col items-center justify-center py-6 text-center sm:py-10">
               <h2 className="text-lg font-semibold text-navy-900">Message received</h2>
@@ -225,10 +228,10 @@ export default function ContactPage() {
           <span className="font-mono text-xs text-slate-400">24h Internal SLA</span>
         </div>
 
-        <div className="mt-4 grid gap-3 sm:grid-cols-3 sm:gap-4">
+        <div className="reveal mt-4 grid gap-3 sm:grid-cols-3 sm:gap-4">
           <a
             href="/grievance"
-            className="rounded-xl bg-white p-4 shadow-sm transition hover:shadow-md sm:rounded-2xl sm:p-5"
+            className="rounded-xl bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:rounded-2xl sm:p-5"
           >
             <p className="text-sm font-semibold text-slate-900">Internal Desk</p>
             <p className="mt-0.5 text-xs text-slate-500">Compliance &amp; Principal Officer</p>
@@ -238,7 +241,7 @@ export default function ContactPage() {
             href="https://scores.sebi.gov.in"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-xl bg-white p-4 shadow-sm transition hover:shadow-md sm:rounded-2xl sm:p-5"
+            className="rounded-xl bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:rounded-2xl sm:p-5"
           >
             <p className="text-sm font-semibold text-slate-900">SEBI SCORES 2.0</p>
             <p className="mt-0.5 text-xs text-slate-500">scores.sebi.gov.in</p>
@@ -248,7 +251,7 @@ export default function ContactPage() {
             href="https://smartodr.in"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-xl bg-white p-4 shadow-sm transition hover:shadow-md sm:rounded-2xl sm:p-5"
+            className="rounded-xl bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:rounded-2xl sm:p-5"
           >
             <p className="text-sm font-semibold text-slate-900">SMART ODR</p>
             <p className="mt-0.5 text-xs text-slate-500">smartodr.in</p>

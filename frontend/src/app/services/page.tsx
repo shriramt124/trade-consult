@@ -31,13 +31,16 @@ function SpecRow({ label, value }: { label: string; value: string }) {
 }
 
 function MandateCard({
-  span, tag, badge, title, desc, spec, footNote,
+  span, tag, badge, title, desc, spec, footNote, delay,
 }: {
   span: string; tag: string; badge: string; title: string; desc: string;
-  spec: { label: string; value: string }; footNote: string;
+  spec: { label: string; value: string }; footNote: string; delay?: number;
 }) {
   return (
-    <div className={`${span} group flex flex-col justify-between rounded-3xl border border-slate-200/80 bg-white p-4 sm:p-6 shadow-sm transition-all hover:border-slate-300 hover:shadow-md`}>
+    <div
+      className={`${span} reveal group flex flex-col justify-between rounded-3xl border border-slate-200/80 bg-white p-4 sm:p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-lg`}
+      style={{ "--reveal-delay": `${delay ?? 0}ms` } as React.CSSProperties}
+    >
       <div className="space-y-3">
         <TileHeader tag={tag} badge={badge} />
         <h3 className="text-lg font-semibold tracking-tight text-slate-950">{title}</h3>

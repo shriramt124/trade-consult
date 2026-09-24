@@ -69,8 +69,12 @@ export default function AboutPage() {
           </div>
 
           <div className="mt-8 grid gap-6 sm:grid-cols-3">
-            {STATS.map((s) => (
-              <div key={s.title} className="card text-center">
+            {STATS.map((s, i) => (
+              <div
+                key={s.title}
+                className="card reveal text-center"
+                style={{ "--reveal-delay": `${i * 100}ms` } as React.CSSProperties}
+              >
                 <span className="text-2xl font-extrabold text-brand-600 sm:text-3xl">{s.pct}</span>
                 <h3 className="mt-2 text-sm font-semibold text-navy-900">{s.title}</h3>
                 <p className="mt-1 text-xs leading-relaxed text-slate-500">{s.desc}</p>

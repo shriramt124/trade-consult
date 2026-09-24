@@ -24,14 +24,19 @@ export default async function BlogPage() {
 
       <section className="bg-slate-50 py-8 sm:py-16">
         <div className="container-site grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {posts.map((p) => (
-            <Link key={p.slug} href={`/blog/${p.slug}`} className="card group flex flex-col overflow-hidden !p-0 transition-shadow hover:shadow-lg">
+          {posts.map((p, i) => (
+            <Link
+              key={p.slug}
+              href={`/blog/${p.slug}`}
+              className="card reveal group flex flex-col overflow-hidden !p-0"
+              style={{ "--reveal-delay": `${i * 80}ms` } as React.CSSProperties}
+            >
               {p.cover_image ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={p.cover_image.startsWith("http") ? p.cover_image : `${API_ORIGIN}${p.cover_image}`}
                   alt={p.title}
-                  className="h-40 w-full object-cover"
+                  className="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               ) : (
                 <div className="flex h-40 items-center justify-center bg-navy-900 text-4xl">
