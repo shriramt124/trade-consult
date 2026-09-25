@@ -4,53 +4,216 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "All 12 Alpha Insiight research services — cash, equity, futures, index & stock options, combos, MCX commodities, Insiight 360 and the Intra Pack trial.",
+    "All 12 Alpha Insiight research services — equity cash, index & stock futures, index & stock options, MCX commodities, the Big Combo and the Trial Pack.",
 };
 
 const HERO_IMAGE =
   "https://images.unsplash.com/photo-1639754390580-2e7437267698?q=80&w=1600&auto=format&fit=crop";
-const MCX_IMAGE =
-  "https://images.unsplash.com/photo-1610375461369-d613b564f4c4?q=80&w=800&auto=format&fit=crop";
 
-function TileHeader({ tag, badge }: { tag: string; badge: string }) {
+type Tier = { name: string; duration: string; price: string };
+type Service = {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  tiers: Tier[];
+};
+
+const CATEGORIES: { title: string; tag: string; services: Service[] }[] = [
+  {
+    title: "Equity Cash Research",
+    tag: "NSE Cash",
+    services: [
+      {
+        id: "cash",
+        name: "INSIIGHT CASH",
+        tagline: "Professional Equity Intraday Research",
+        description:
+          "1–2 researched intraday opportunities per trading day in the equity cash segment, with clear entry, target and stop-loss levels.",
+        tiers: [
+          { name: "Quarterly", duration: "3 Months", price: "₹25,000" },
+          { name: "Half-Yearly", duration: "6 Months", price: "₹45,000" },
+          { name: "Yearly", duration: "12 Months", price: "₹75,000" },
+        ],
+      },
+      {
+        id: "cash-pro",
+        name: "INSIIGHT CASH PRO",
+        tagline: "Premium Equity Intraday Research",
+        description:
+          "The premium evolution of Insiight Cash — PRO stock-selection engine, multi-timeframe confirmation, deep sector intelligence and priority research support.",
+        tiers: [{ name: "Yearly", duration: "12 Months", price: "₹1,51,000" }],
+      },
+    ],
+  },
+  {
+    title: "Index Derivatives Research",
+    tag: "NIFTY / BANK NIFTY",
+    services: [
+      {
+        id: "index-future",
+        name: "INSIIGHT INDEX FUTURE",
+        tagline: "Professional Index Futures Research",
+        description:
+          "NIFTY & BANK NIFTY futures research — trend, price action, Open Interest and momentum, with disciplined entry, target and stop-loss levels.",
+        tiers: [
+          { name: "Prime", duration: "3 Months", price: "₹35,000" },
+          { name: "Advance", duration: "6 Months", price: "₹70,000" },
+          { name: "Elite", duration: "12 Months", price: "₹1,25,000" },
+        ],
+      },
+      {
+        id: "index-future-pro",
+        name: "INSIIGHT INDEX FUTURE PRO",
+        tagline: "Premium Index Futures Intelligence",
+        description:
+          "The PRO evolution — OI positioning matrix, multi-timeframe index mapping, scenario engine and a premium pre-market command desk.",
+        tiers: [
+          { name: "PRO Start", duration: "3 Months", price: "₹45,000" },
+          { name: "PRO Advance", duration: "6 Months", price: "₹85,000" },
+          { name: "PRO Elite", duration: "12 Months", price: "₹1,51,000" },
+        ],
+      },
+      {
+        id: "index-option",
+        name: "INSIIGHT INDEX OPTION",
+        tagline: "Professional Index Options Research",
+        description:
+          "NIFTY & BANK NIFTY options research — Call/Put setups, option-chain intelligence, OI, PCR, IV and premium behaviour.",
+        tiers: [
+          { name: "Prime", duration: "2 Months", price: "₹45,000" },
+          { name: "Advance", duration: "4 Months", price: "₹80,000" },
+          { name: "Elite", duration: "6 Months", price: "₹1,25,000" },
+        ],
+      },
+      {
+        id: "index-pro",
+        name: "INSIIGHT INDEX PRO",
+        tagline: "Premium Index & Market Intelligence",
+        description:
+          "A multi-layer index research ecosystem — global cues, market breadth, sector rotation, derivatives positioning and scenario engine.",
+        tiers: [
+          { name: "Start", duration: "1 Month", price: "₹55,000" },
+          { name: "Advance", duration: "2 Months", price: "₹95,000" },
+          { name: "Elite", duration: "3 Months", price: "₹1,51,000" },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Stock Derivatives Research",
+    tag: "F&O Segment",
+    services: [
+      {
+        id: "stock-future",
+        name: "INSIIGHT STOCK FUTURE",
+        tagline: "Professional Stock Futures Research",
+        description:
+          "Individual stock-futures research — technical structure, Open Interest, sector strength and relative-strength observations.",
+        tiers: [
+          { name: "Prime", duration: "3 Months", price: "₹35,000" },
+          { name: "Advance", duration: "6 Months", price: "₹70,000" },
+          { name: "Elite", duration: "12 Months", price: "₹1,15,000" },
+        ],
+      },
+      {
+        id: "stock-future-pro",
+        name: "INSIIGHT STOCK FUTURE PRO",
+        tagline: "Premium Stock Futures Intelligence",
+        description:
+          "PRO stock-scanner matrix, futures positioning map, relative-strength champion board and event-to-price reaction research.",
+        tiers: [
+          { name: "PRO Prime", duration: "3 Months", price: "₹45,000" },
+          { name: "PRO Advance", duration: "6 Months", price: "₹85,000" },
+          { name: "PRO Elite", duration: "12 Months", price: "₹1,51,000" },
+        ],
+      },
+      {
+        id: "stock-options",
+        name: "INSIIGHT STOCK OPTIONS",
+        tagline: "Professional Stock Options Research",
+        description:
+          "High-liquidity stock-option research with option-chain intelligence, OI, IV and expiry-specific setups, entry, target and stop-loss guidance.",
+        tiers: [
+          { name: "Prime", duration: "3 Months", price: "₹45,000" },
+          { name: "Advance", duration: "6 Months", price: "₹80,000" },
+          { name: "Elite", duration: "12 Months", price: "₹1,35,000" },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Commodities Research",
+    tag: "MCX",
+    services: [
+      {
+        id: "mcx-pro",
+        name: "INSIIGHT MCX PRO",
+        tagline: "Premium MCX Futures + Options Intelligence",
+        description:
+          "Gold, Silver, Crude Oil & Natural Gas — futures and options research combined with global cues, USD/INR context and a volatility regime engine.",
+        tiers: [
+          { name: "PRO Prime", duration: "3 Months", price: "₹55,000" },
+          { name: "PRO Advance", duration: "6 Months", price: "₹95,000" },
+          { name: "PRO Elite", duration: "12 Months", price: "₹1,51,000" },
+        ],
+      },
+    ],
+  },
+];
+
+const BIG_COMBO: Service = {
+  id: "big-combo",
+  name: "INSIIGHT BIG COMBO",
+  tagline: "Complete Multi-Segment Research Ecosystem",
+  description:
+    "Equity + Index + Futures + Options + MCX — every desk combined into one integrated research subscription with a daily Big Combo Command Brief.",
+  tiers: [{ name: "Combo", duration: "3 Months", price: "₹1,51,000" }],
+};
+
+const TRIAL_PACK: Service = {
+  id: "trial-pack",
+  name: "INSIIGHT TRIAL PACK",
+  tagline: "One-Time Starter Trial",
+  description:
+    "Try any one eligible Alpha Insiight research desk for 7 days, delivered on dashboard + SMS, before committing to a full subscription.",
+  tiers: [{ name: "Trial", duration: "7 Days", price: "₹5,900" }],
+};
+
+function TierChip({ tier }: { tier: Tier }) {
   return (
-    <div className="flex items-center justify-between">
-      <span className="font-mono text-xs uppercase text-slate-500">{tag}</span>
-      <span className="rounded-full bg-slate-100 px-2 py-0.5 font-mono text-xs text-slate-700">{badge}</span>
+    <div className="rounded-xl border border-slate-100 bg-slate-50 px-3 py-2 font-mono text-xs">
+      <div className="text-slate-500">
+        {tier.name} · {tier.duration}
+      </div>
+      <div className="font-semibold text-slate-900">{tier.price} + GST</div>
     </div>
   );
 }
 
-function SpecRow({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex items-center justify-between rounded-xl border border-slate-100 bg-slate-50 p-2.5 font-mono text-xs">
-      <span className="text-slate-500">{label}</span>
-      <span className="font-medium text-slate-800">{value}</span>
-    </div>
-  );
-}
-
-function MandateCard({
-  span, tag, badge, title, desc, spec, footNote, delay,
-}: {
-  span: string; tag: string; badge: string; title: string; desc: string;
-  spec: { label: string; value: string }; footNote: string; delay?: number;
-}) {
+function ServiceCard({ service, delay }: { service: Service; delay?: number }) {
   return (
     <div
-      className={`${span} reveal group flex flex-col justify-between rounded-3xl border border-slate-200/80 bg-white p-4 sm:p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-lg`}
+      className="reveal group flex flex-col justify-between rounded-3xl border border-slate-200/80 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-lg sm:p-6"
       style={{ "--reveal-delay": `${delay ?? 0}ms` } as React.CSSProperties}
     >
       <div className="space-y-3">
-        <TileHeader tag={tag} badge={badge} />
-        <h3 className="text-lg font-semibold tracking-tight text-slate-950">{title}</h3>
-        <p className="text-sm font-light leading-snug text-slate-600">{desc}</p>
-        <SpecRow label={spec.label} value={spec.value} />
+        <span className="font-mono text-xs uppercase tracking-wide text-slate-500">{service.tagline}</span>
+        <h3 className="text-lg font-semibold tracking-tight text-slate-950">{service.name}</h3>
+        <p className="text-sm font-light leading-snug text-slate-600">{service.description}</p>
+        <div className="flex flex-wrap gap-2 pt-1">
+          {service.tiers.map((t) => (
+            <TierChip key={t.name} tier={t} />
+          ))}
+        </div>
       </div>
-      <div className="flex items-center justify-between border-t border-slate-100 pt-4">
-        <span className="font-mono text-xs font-medium text-secondary">{footNote}</span>
-        <Link href="/pricing" className="flex items-center gap-1 text-sm font-medium text-primary transition-all hover:text-on-primary-container group-hover:translate-x-0.5">
-          <span>Details</span>
+      <div className="mt-4 flex items-center justify-between border-t border-slate-100 pt-4">
+        <span className="font-mono text-xs font-medium text-secondary">Research Service</span>
+        <Link
+          href="/contact"
+          className="flex items-center gap-1 text-sm font-medium text-primary transition-all hover:text-on-primary-container group-hover:translate-x-0.5"
+        >
+          <span>Enquire</span>
           <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
         </Link>
       </div>
@@ -94,195 +257,107 @@ export default function ServicesPage() {
               <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-accent" /> Execution Engine
             </span>
             <span className="hidden rounded-full border border-dark-border bg-dark-surface/85 px-3 py-1 font-mono text-xs text-slate-300 backdrop-blur-md sm:inline-flex">
-              &lt;350ms Dashboard Dispatch
+              12 Research Desks
             </span>
           </div>
 
           <div className="absolute bottom-4 left-4 right-4 flex flex-col justify-between gap-3 text-white sm:flex-row sm:items-center">
             <div>
               <span className="block font-mono text-xs uppercase tracking-wider text-cyan-accent">Institutional Architecture</span>
-              <p className="text-sm font-light text-slate-300">Mathematical 1:2+ calibrated setups across NSE, BSE &amp; MCX.</p>
+              <p className="text-sm font-light text-slate-300">Structured, tiered research across NSE, BSE &amp; MCX.</p>
             </div>
             <Link
               href="/pricing"
               className="inline-flex items-center gap-1.5 self-start rounded-full bg-white px-4 py-2 text-sm font-medium text-dark-surface shadow-md transition-all hover:bg-slate-100 sm:self-auto"
             >
-              <span>View Allocation Plans</span>
+              <span>View Pricing Page</span>
               <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Bento grid */}
-      <section className="mx-auto max-w-7xl px-6 py-4">
-        <div className="mb-6 flex items-center justify-between">
-          <div className="space-y-0.5">
-            <div className="flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
-              <span className="font-mono text-xs font-semibold uppercase tracking-wider text-primary">Bento Portfolio Matrix</span>
+      {/* Flagship: Big Combo */}
+      <section className="mx-auto max-w-7xl px-4 py-4 sm:px-6">
+        <div className="reveal group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-dark-border bg-dark-surface p-4 text-white shadow-lg sm:p-5 md:p-7">
+          <div className="pointer-events-none absolute -right-16 -top-16 h-80 w-80 rounded-full bg-primary/25 blur-3xl" />
+          <div className="relative z-10 space-y-3">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="rounded-full bg-primary px-2.5 py-0.5 font-mono text-xs font-semibold tracking-wider text-white">FLAGSHIP</span>
+              <span className="rounded-full bg-dark-container px-2.5 py-0.5 font-mono text-xs text-cyan-accent">Omni-Asset Breadth</span>
+              <span className="rounded-full bg-dark-container px-2.5 py-0.5 font-mono text-xs text-slate-300">Family Office Grade</span>
             </div>
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">The 12 Official Research Services</h2>
-          </div>
-          <span className="rounded-full border border-slate-200 bg-surface-container-low px-3 py-1.5 font-mono text-xs text-slate-600">
-            12 Active Services
-          </span>
-        </div>
-
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-12">
-          {/* 01 Flagship */}
-          <div className="group relative flex min-h-[300px] flex-col justify-between overflow-hidden rounded-3xl border border-dark-border bg-dark-surface p-4 sm:p-5 md:p-7 text-white shadow-lg md:col-span-8">
-            <div className="pointer-events-none absolute -right-16 -top-16 h-80 w-80 rounded-full bg-primary/25 blur-3xl" />
-            <div className="relative z-10 space-y-3">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="rounded-full bg-primary px-2.5 py-0.5 font-mono text-xs font-semibold tracking-wider text-white">01 • FLAGSHIP</span>
-                <span className="rounded-full bg-dark-container px-2.5 py-0.5 font-mono text-xs text-cyan-accent">Omni-Asset Breadth</span>
-                <span className="rounded-full bg-dark-container px-2.5 py-0.5 font-mono text-xs text-slate-300">Family Office Grade</span>
-              </div>
-              <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">INSIIGHT 360</h3>
-              <p className="max-w-xl text-sm font-light leading-relaxed text-slate-300">
-                High-precision, research-driven investment service with disciplined,
-                diversified market strategies — 10 Index Options, 10 Stock Options, 5
-                Stock Futures, 5 Index Futures, 5 MCX Options, 5 Equity Cash (Intraday)
-                and 5 Positional / Long-term recommendations. Minimum investment ₹2,00,000.
-              </p>
-              <div className="flex flex-wrap gap-2 pt-2">
-                {["Equities", "F&O Combos", "Commodities", "Live Dashboard Routing"].map((t) => (
-                  <span key={t} className="rounded-md bg-dark-container-high px-2 py-0.5 font-mono text-xs text-slate-300">{t}</span>
-                ))}
-              </div>
-            </div>
-            <div className="relative z-10 mt-4 flex items-center justify-between border-t border-dark-border pt-6">
-              <span className="font-mono text-xs text-slate-400">Total Universe • Dynamic Allocation</span>
-              <Link href="/pricing" className="inline-flex items-center gap-1.5 text-sm font-medium text-cyan-accent transition-colors hover:text-white group-hover:translate-x-0.5">
-                <span>Details</span>
-                <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-              </Link>
-            </div>
-          </div>
-
-          {/* 10 MCX with image */}
-          <div className="group flex flex-col justify-between rounded-3xl border border-slate-200/80 bg-white p-4 sm:p-6 shadow-sm transition-all hover:border-slate-300 hover:shadow-md md:col-span-4">
-            <div className="space-y-3">
-              <div className="relative h-32 w-full overflow-hidden rounded-2xl bg-dark-surface">
-                <img src={MCX_IMAGE} alt="MCX commodities & energy" className="h-full w-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-105" />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-dark-surface/80 via-transparent to-transparent" />
-                <span className="absolute left-2 top-2 rounded-full bg-dark-surface/80 px-2 py-0.5 font-mono text-xs text-tertiary-fixed backdrop-blur">10 • COMMODITIES</span>
-                <span className="absolute bottom-2 left-2 font-mono text-xs text-white">Crude • NG • Gold • Silver</span>
-              </div>
-              <div>
-                <div className="mb-1 flex items-center justify-between">
-                  <h3 className="text-lg font-semibold tracking-tight text-slate-950">INSIIGHT-MCX</h3>
-                  <span className="rounded-full border border-amber-200/60 bg-amber-50 px-2 py-0.5 font-mono text-xs text-amber-700">Macro Aligned</span>
+            <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">{BIG_COMBO.name}</h2>
+            <p className="max-w-2xl text-sm font-light leading-relaxed text-slate-300">{BIG_COMBO.description}</p>
+            <div className="flex flex-wrap gap-2 pt-2">
+              {BIG_COMBO.tiers.map((t) => (
+                <div key={t.name} className="rounded-xl border border-slate-700/60 bg-slate-800/60 px-3 py-2 font-mono text-xs">
+                  <div className="text-slate-400">{t.name} · {t.duration}</div>
+                  <div className="font-semibold text-secondary-fixed">{t.price} + GST</div>
                 </div>
-                <p className="text-sm font-light leading-snug text-slate-600">High-risk commodity trading requiring larger investments, aiming for higher returns.</p>
-              </div>
-            </div>
-            <div className="flex items-center justify-between border-t border-slate-100 pt-4">
-              <span className="font-mono text-xs text-slate-500">Intraday &amp; Swing</span>
-              <Link href="/pricing" className="inline-flex items-center gap-1 text-sm font-medium text-primary transition-all hover:text-on-primary-container group-hover:translate-x-0.5">
-                <span>Details</span>
-                <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-              </Link>
+              ))}
             </div>
           </div>
+          <div className="relative z-10 mt-4 flex items-center justify-between border-t border-dark-border pt-6">
+            <span className="font-mono text-xs text-slate-400">Equity • Index • Futures • Options • MCX</span>
+            <Link href="/contact" className="inline-flex items-center gap-1.5 text-sm font-medium text-cyan-accent transition-colors hover:text-white group-hover:translate-x-0.5">
+              <span>Enquire</span>
+              <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </Link>
+          </div>
+        </div>
+      </section>
 
-          <MandateCard
-            span="md:col-span-4" tag="10 • COMMODITIES" badge="Research-Driven"
-            title="INSIIGHT MCX (COMMODITIES)"
-            desc="High-risk, research-driven commodity trades in MCX markets."
-            spec={{ label: "Segment", value: "Gold • Silver • Crude • NG" }}
-            footNote="Intraday & Positional"
-          />
-
-          <MandateCard
-            span="md:col-span-4" tag="02 • INDEX F&O" badge="1–2 Setups / Day"
-            title="INSIIGHT OPTION – INDEX"
-            desc="Focused on NIFTY / BANKNIFTY / FINNIFTY / SENSEX with 1–2 trading ideas per day."
-            spec={{ label: "Benchmark", value: "NIFTY / BANKNIFTY" }}
-            footNote="Defined Risk Stops"
-          />
-          <MandateCard
-            span="md:col-span-4" tag="03 • STOCK F&O" badge="F&O Segment"
-            title="INSIIGHT OPTION – STOCK"
-            desc="High-liquidity stock option trading with 1–2 ideas per day, including entry, target, and stop-loss guidance."
-            spec={{ label: "Universe", value: "Liquid F&O Equities" }}
-            footNote="Strict Trailing SL"
-          />
-          <MandateCard
-            span="md:col-span-4" tag="04 • HEDGED COMBO" badge="Multi-Leg"
-            title="INSIIGHT OPTION COMBO – STOCK"
-            desc="High-liquidity stock option trading with 1–2 ideas per day, including entry, target, and stop-loss guidance."
-            spec={{ label: "Structure", value: "Hedged Spreads" }}
-            footNote="Theta + Directional"
-          />
-          <MandateCard
-            span="md:col-span-4" tag="05 • LEVERAGE" badge="NSE Futures"
-            title="INSIIGHT FUTURE"
-            desc="For risky traders aiming for profits in intraday and positional trading with higher risk tolerance."
-            spec={{ label: "Risk Profile", value: "Leveraged Intraday" }}
-            footNote="1:2+ Calibrated R:R"
-          />
-
-          {/* 11 Intra Pack (dark) */}
-          <div className="group flex flex-col justify-between rounded-3xl border border-slate-800 bg-slate-900 p-4 sm:p-6 text-white shadow-sm md:col-span-4">
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-xs uppercase text-cyan-accent">11 • STARTER TRIAL</span>
-                <span className="rounded-full border border-red-500/20 bg-primary/20 px-2 py-0.5 font-mono text-xs text-cyan-accent">One-Time Trial</span>
+      {/* Category grids */}
+      {CATEGORIES.map((cat, ci) => (
+        <section key={cat.title} className="mx-auto max-w-7xl px-4 py-4 sm:px-6">
+          <div className="mb-4 flex items-center justify-between sm:mb-6">
+            <div className="space-y-0.5">
+              <div className="flex items-center gap-1.5">
+                <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
+                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-primary">{cat.tag}</span>
               </div>
-              <h3 className="text-lg font-semibold tracking-tight text-white">INTRA PACK</h3>
-              <p className="text-sm font-light leading-snug text-slate-300">
-                One-time intraday trading service offering precise calls with controlled risk.
-              </p>
-              <div className="flex items-center justify-between rounded-xl border border-slate-700/60 bg-slate-800/60 p-2.5 font-mono text-xs">
-                <span className="text-slate-400">Trial Delivery</span>
-                <span className="font-medium text-secondary-fixed">Dashboard + SMS</span>
-              </div>
+              <h2 className="text-xl font-semibold tracking-tight text-slate-950 sm:text-2xl">{cat.title}</h2>
             </div>
-            <div className="flex items-center justify-between border-t border-slate-800 pt-4">
-              <span className="font-mono text-xs text-slate-400">Zero Long-Term Lock</span>
-              <Link href="/pricing" className="inline-flex items-center gap-1 text-sm font-medium text-cyan-accent transition-all hover:text-white group-hover:translate-x-0.5">
-                <span>Details</span>
-                <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-              </Link>
-            </div>
+            <span className="rounded-full border border-slate-200 bg-surface-container-low px-3 py-1.5 font-mono text-xs text-slate-600">
+              {cat.services.length} Desk{cat.services.length > 1 ? "s" : ""}
+            </span>
           </div>
 
-          <MandateCard
-            span="md:col-span-4" tag="06 • CASH TRADING" badge="Hourly"
-            title="INSIIGHT CASH"
-            desc="Short-term trading on an hourly basis. Buy and sell shares on the same day for quick profits."
-            spec={{ label: "Horizon", value: "Hourly to Same-Day" }}
-            footNote="Quick Turnaround"
-          />
-          <MandateCard
-            span="md:col-span-4" tag="07 • INTRADAY EQUITY" badge="Intraday"
-            title="INSIIGHT CASH – INTRADAY (EQUITY)"
-            desc="High-accuracy intraday equity calls backed by research."
-            spec={{ label: "Mandate", value: "Zero Overnight Risk" }}
-            footNote="NSE Cash"
-          />
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2">
+            {cat.services.map((s, i) => (
+              <ServiceCard key={s.id} service={s} delay={(ci * 2 + i) * 60} />
+            ))}
+          </div>
+        </section>
+      ))}
 
-          <MandateCard
-            span="md:col-span-6" tag="08 • EQUITY DELIVERY" badge="Long Term"
-            title="INSIIGHT CASH – LONG TERM (EQUITY DELIVERY)"
-            desc="Quality long-term equity investments with disciplined research."
-            spec={{ label: "Filter Standard", value: "Quality & Clean Debt" }}
-            footNote="Wealth Compounding"
-          />
-          <MandateCard
-            span="md:col-span-6" tag="09 • PORTFOLIO ALLOCATION" badge="20–25 Calls"
-            title="INSIIGHT EQUITY"
-            desc="1-year investment across 20–25 calls from 8–10 sectors for a diversified equity portfolio."
-            spec={{ label: "Diversification", value: "8–10 Key Sectors" }}
-            footNote="1-Year Model"
-          />
+      {/* Trial Pack */}
+      <section className="mx-auto max-w-7xl px-4 py-4 sm:px-6">
+        <div className="reveal group flex flex-col justify-between rounded-3xl border border-slate-800 bg-slate-900 p-4 text-white shadow-sm sm:p-6 md:flex-row md:items-center md:gap-6">
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-xs uppercase text-cyan-accent">STARTER TRIAL</span>
+              <span className="rounded-full border border-red-500/20 bg-primary/20 px-2 py-0.5 font-mono text-xs text-cyan-accent">One-Time</span>
+            </div>
+            <h3 className="text-lg font-semibold tracking-tight text-white">{TRIAL_PACK.name}</h3>
+            <p className="max-w-xl text-sm font-light leading-snug text-slate-300">{TRIAL_PACK.description}</p>
+          </div>
+          <div className="mt-4 flex items-center justify-between gap-4 border-t border-slate-800 pt-4 md:mt-0 md:flex-col md:items-end md:border-t-0 md:pt-0">
+            <div className="rounded-xl border border-slate-700/60 bg-slate-800/60 px-4 py-2.5 font-mono text-sm">
+              <span className="font-semibold text-secondary-fixed">₹5,900 + GST</span>
+              <span className="ml-2 text-slate-400">/ 7 Days</span>
+            </div>
+            <Link href="/contact" className="inline-flex items-center gap-1 text-sm font-medium text-cyan-accent transition-all hover:text-white">
+              <span>Start Trial</span>
+              <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Regulatory protocol strip */}
-      <section className="mx-auto max-w-7xl px-6 py-4">
+      <section className="mx-auto max-w-7xl px-4 py-4 sm:px-6">
         <div className="rounded-2xl border border-slate-200/70 bg-surface-container-low p-4">
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
             <div className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-wider text-primary">
@@ -301,17 +376,22 @@ export default function ServicesPage() {
               ))}
             </div>
           </div>
+          <p className="mt-4 text-xs leading-relaxed text-slate-500">
+            All services above are SEBI-registered research services. Prices exclude 18% GST. Investments and
+            trading in securities, derivatives and commodities involve substantial market risk; past performance
+            is not indicative of future results and no return, profit or accuracy is guaranteed or implied.
+          </p>
         </div>
       </section>
 
       {/* Concierge CTA */}
-      <section className="mx-auto max-w-7xl px-6 pb-16 pt-2">
-        <div className="flex flex-col items-center justify-between gap-3 sm:gap-6 rounded-3xl border border-dark-border bg-dark-surface p-4 sm:p-6 md:p-8 text-white shadow-xl md:flex-row">
+      <section className="mx-auto max-w-7xl px-4 pb-16 pt-2 sm:px-6">
+        <div className="flex flex-col items-center justify-between gap-3 rounded-3xl border border-dark-border bg-dark-surface p-4 text-white shadow-xl sm:gap-6 sm:p-6 md:flex-row md:p-8">
           <div className="space-y-1 text-center md:text-left">
             <span className="font-mono text-xs font-medium uppercase tracking-wider text-cyan-accent">Institutional Desk Concierge</span>
             <h3 className="text-xl font-semibold text-white sm:text-2xl">Need guidance choosing the right research desk?</h3>
             <p className="max-w-xl text-sm font-light text-slate-400">
-              Speak with our principal desk analyst to evaluate allocation models and historical mandate parameters.
+              Speak with our principal desk analyst to evaluate which service matches your market focus and risk appetite.
             </p>
           </div>
           <div className="flex flex-col items-center gap-4 sm:flex-row">
